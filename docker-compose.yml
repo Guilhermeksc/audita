@@ -14,7 +14,7 @@ services:
       - ./backend/django:/opt/django
       - ./.venv:/opt/airflow/.venv  # Se necessário
     environment:
-      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:postgres@postgres:5432/postgres
+        - .env.dev
     depends_on:
       - postgres
 
