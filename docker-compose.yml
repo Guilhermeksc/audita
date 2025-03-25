@@ -1,0 +1,37 @@
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Airflow Webserver
+      - "8000:8000"  # Django (ex.: via Gunicorn)
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./utils:/opt/airflow/utils
+      - ./backend/airflow:/opt/airflow/airflow
+      - ./backend/django:/opt/django
+      - ./.venv:/opt/airflow/.venv  # Se necessário
+    environment:
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://postgres:postgres@postgres:5432/postgres
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    networks:
+      - airflow_network
+
+volumes:
+  postgres-db-volume:
+
+networks:
+  airflow_network:
+    driver: bridge

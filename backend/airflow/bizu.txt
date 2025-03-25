@@ -1,0 +1,11 @@
+docker compose down -v
+docker compose up -d --build
+
+
+docker compose build airflow-webserver
+
+
+psql -U postgres -d auditapro_db
+
+
+docker compose exec airflow-webserver airflow tasks test raspar_anos_dados_in raspar_anos 2025-03-25
