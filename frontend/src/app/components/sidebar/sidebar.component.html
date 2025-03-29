@@ -1,0 +1,43 @@
+<div class="sidebar-container" [class.closed]="!isOpen">
+  <div class="sidebar" *ngIf="isOpen">
+    <div class="sidebar-menu">
+      <ul>
+        <li *ngFor="let item of menuItems">
+          <span (click)="toggleExpand(item)" class="menu-title">
+            {{ item.title }}
+            <mat-icon class="arrow-icon">
+              {{ item.expanded ? 'expand_more' : 'chevron_right' }}
+            </mat-icon>
+          </span>
+                   
+          <ul *ngIf="item.expanded">
+            <li *ngFor="let child of item.children">
+              <!-- Handle submenu items -->
+              <ng-container *ngIf="isSubMenuItem(child); else simpleItem">
+                <span (click)="toggleExpand(child)" class="submenu-title">
+                  {{ child.title }}
+                  <mat-icon class="arrow-icon">
+                    {{ child.expanded ? 'expand_more' : 'chevron_right' }}
+                  </mat-icon>
+                </span>
+                <ul *ngIf="child.expanded" class="submenu">
+                  <li *ngFor="let subChild of child.children">
+                    <a (click)="navigate(item.title, subChild)" routerLinkActive="active">
+                      {{ subChild }}
+                    </a>
+                  </li>
+                </ul>
+              </ng-container>
+              <!-- Handle regular items -->
+              <ng-template #simpleItem>
+                <a (click)="navigate(item.title, child)" routerLinkActive="active">
+                  {{ child }}
+                </a>
+              </ng-template>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

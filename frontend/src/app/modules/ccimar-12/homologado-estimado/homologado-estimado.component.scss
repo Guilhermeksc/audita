@@ -1,0 +1,32 @@
+.homologado-container {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    color: #1e1e1e;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #2d2d35;
+    color: white;
+  }
+  
+  .alert {
+    color: red;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,16 @@
+<div class="dialog-container">
+    <h2>Trocar Perfil</h2>
+  
+    <div class="form-group">
+      <label for="perfil">Selecione o novo perfil:</label>
+      <select [(ngModel)]="perfilSelecionado" id="perfil">
+        <option *ngFor="let perfil of perfis" [value]="perfil">{{ perfil }}</option>
+      </select>
+    </div>
+  
+    <div class="actions">
+      <button class="btn primary" (click)="confirmar()">Confirmar</button>
+      <button class="btn secondary" (click)="cancelar()">Cancelar</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,83 @@
+<h2 mat-dialog-title class="dialog-header">
+    <span>
+      NR: {{ data.nr }} &nbsp;&nbsp; Descrição: {{ data.descricao }}
+    </span>
+    <button mat-icon-button color="warn" aria-label="Excluir" (click)="excluir()" class="delete-button">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </h2>
+  
+  
+  <mat-dialog-content>
+    <mat-tab-group>
+      <mat-tab label="Informações">
+        <div class="tab-content">
+        <form class="info-form">
+          <mat-form-field appearance="fill">
+            <mat-label>Tipo de Serviço</mat-label>
+            <mat-select [(ngModel)]="data.tipo_de_servico" name="tipoServico">
+              <mat-option *ngFor="let tipo of tiposServico" [value]="tipo">{{ tipo }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Descrição Detalhada</mat-label>
+            <textarea matInput [(ngModel)]="data.descricao" name="descricao" rows="4"></textarea>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Origem da Demanda</mat-label>
+            <mat-select [(ngModel)]="data.origem_demanda" name="origem">
+              <mat-option *ngFor="let origem of origens" [value]="origem">{{ origem }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Obrigação Legal</mat-label>
+            <input matInput [(ngModel)]="data.objetivo_auditoria" name="obrigacao" />
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Início</mat-label>
+            <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="data.inicio" name="inicio" />
+            <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+            <mat-datepicker #pickerInicio></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Conclusão</mat-label>
+            <input matInput [matDatepicker]="pickerFim" [(ngModel)]="data.conclusao" name="fim" />
+            <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFim></mat-datepicker>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Situação</mat-label>
+            <mat-select [(ngModel)]="data.situacao" name="situacao">
+              <mat-option *ngFor="let s of situacoes" [value]="s">{{ s }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+      </mat-tab>
+  
+      <mat-tab label="Registros">
+        <div class="tab-content">
+          Conteúdo da aba Registros.
+        </div>
+      </mat-tab>
+  
+      <mat-tab label="Cálculo Homem-hora">
+        <div class="tab-content">
+          Conteúdo da aba Cálculo Homem-hora.
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+  </mat-dialog-actions>
+  

@@ -1,0 +1,89 @@
+<div>
+  <mat-card>
+    <mat-card-content>
+      <div class="header-container">
+        <h2 class="page-title">Publicações por Período</h2>
+        
+        <!-- Filtros -->
+        <form [formGroup]="filterForm" class="filters-form">
+          <mat-form-field appearance="outline">
+            <mat-label>Ano</mat-label>
+            <mat-select formControlName="ano">
+              <mat-option *ngFor="let year of availableYears" [value]="year">
+                {{ year }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Mês</mat-label>
+            <mat-select formControlName="mes">
+              <mat-option *ngFor="let month of monthOptions" [value]="month.value">
+                {{ month.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de Documento</mat-label>
+            <mat-select formControlName="tipo">
+              <mat-option value="">Todos</mat-option>
+              <mat-option *ngFor="let tipo of tiposDocumento" [value]="tipo">
+                {{ tipo }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="info-text">
+        Nota: As consultas estão disponíveis até o mês anterior. Para publicações do mês atual, utilize o módulo "Consulta D.O.U por dia".
+      </div>
+
+      <!-- Tabela -->
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+        <!-- Data Column -->
+        <ng-container matColumnDef="data_publicacao">
+          <th mat-header-cell *matHeaderCellDef>Data</th>
+          <td mat-cell *matCellDef="let element">{{element.data_publicacao | date:'dd/MM/yyyy'}}</td>
+        </ng-container>
+
+        <!-- Tipo Column -->
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef>Tipo</th>
+          <td mat-cell *matCellDef="let element">{{element.tipo}}</td>
+        </ng-container>
+
+        <!-- Orgão Column -->
+        <ng-container matColumnDef="orgao">
+          <th mat-header-cell *matHeaderCellDef>Órgão</th>
+          <td mat-cell *matCellDef="let element">{{element.orgao}}</td>
+        </ng-container>
+
+        <!-- Identificação Column -->
+        <ng-container matColumnDef="identifica">
+          <th mat-header-cell *matHeaderCellDef>Identificação</th>
+          <td mat-cell *matCellDef="let element">{{element.identifica}}</td>
+        </ng-container>
+
+        <!-- Ações Column -->
+        <ng-container matColumnDef="acoes">
+          <th mat-header-cell *matHeaderCellDef>Ações</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="accent" title="Baixar PDF" (click)="openPdf(element.link_pdf)">
+              <mat-icon>download</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+            (dblclick)="openDetailDialog(row)"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Selecione a página">
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div> 

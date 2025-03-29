@@ -1,0 +1,20 @@
+<!-- header.component.html -->.
+
+<header class="header">
+  <div class="left-section">
+    <button class="toggle-btn" (click)="toggleSidebar()">
+      <img src="assets/icons/png/sidebar.png" alt="Toggle Sidebar">
+    </button>
+    <h1>{{ appTitle }}</h1>
+  </div>
+
+  <div class="user-info">
+    <span class="username">
+      Usuário: {{ userName }} | Perfil: {{ perfilAtivo }}
+    </span>
+    <button class="btn" (click)="changeProfile()">Trocar Perfil</button>
+    <button class="btn" (click)="changePassword()">Mudar Senha</button>
+    <button class="btn logout" (click)="logout()">Sair</button>
+    <span class="version">{{ version }}</span>
+  </div>
+</header>

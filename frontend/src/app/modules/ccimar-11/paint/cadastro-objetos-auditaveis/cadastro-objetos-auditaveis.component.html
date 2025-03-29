@@ -1,0 +1,85 @@
+<div>
+    <mat-card>
+      <mat-card-content>
+        <div class="header-container">
+          <h2 class="page-title">Cadastro - Objetos Auditáveis</h2>
+  
+          <div class="button-group">
+            <button mat-raised-button color="primary">
+              <mat-icon>file_download</mat-icon>
+              Exportar
+            </button>
+            <button mat-raised-button color="accent">
+              <mat-icon>file_upload</mat-icon>
+              Importar
+            </button>
+            <button mat-raised-button color="primary">
+              <mat-icon>add</mat-icon>
+              Adicionar
+            </button>
+            <button mat-raised-button color="warn">
+              <mat-icon>description</mat-icon>
+              Relatório
+            </button>
+            <button mat-raised-button color="accent">
+              <mat-icon>help_outline</mat-icon>
+              Ajuda
+            </button>
+          </div>
+        </div>
+ 
+  
+        <!-- Tabela -->
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+  
+          <ng-container matColumnDef="nr">
+            <th mat-header-cell *matHeaderCellDef>NR</th>
+            <td mat-cell *matCellDef="let element">{{ element.nr }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="tipo_de_servico">
+            <th mat-header-cell *matHeaderCellDef>Tipo</th>
+            <td mat-cell *matCellDef="let element">{{ element.tipo_de_servico }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="descricao">
+            <th mat-header-cell *matHeaderCellDef>Objeto Auditável</th>
+            <td mat-cell *matCellDef="let element">{{ element.descricao }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="origem_demanda">
+            <th mat-header-cell *matHeaderCellDef>Origem da Demanda</th>
+            <td mat-cell *matCellDef="let element">{{ element.origem_demanda }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="inicio">
+            <th mat-header-cell *matHeaderCellDef>Início</th>
+            <td mat-cell *matCellDef="let element">{{ element.inicio | date:'dd/MM/yyyy' }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="conclusao">
+            <th mat-header-cell *matHeaderCellDef>Conclusão</th>
+            <td mat-cell *matCellDef="let element">{{ element.conclusao | date:'dd/MM/yyyy' }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="hh">
+            <th mat-header-cell *matHeaderCellDef>HH</th>
+            <td mat-cell *matCellDef="let element">{{ element.hh }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="situacao">
+            <th mat-header-cell *matHeaderCellDef>Situação</th>
+            <td mat-cell *matCellDef="let element">{{ element.situacao }}</td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (dblclick)="openDetailDialog(row)">
+        </tr>
+        
+        </table>
+        
+        <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

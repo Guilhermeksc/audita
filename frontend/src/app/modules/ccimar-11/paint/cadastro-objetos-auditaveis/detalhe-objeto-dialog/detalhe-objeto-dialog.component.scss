@@ -1,0 +1,31 @@
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .delete-button {
+    margin-left: auto;
+    opacity: 0.6;
+    transition: opacity 0.2s ease-in-out;
+  
+    &:hover {
+      opacity: 1;
+    }
+  
+    mat-icon {
+      font-size: 20px;
+    }
+  }
+  
+  .info-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; // espaço entre os campos
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  

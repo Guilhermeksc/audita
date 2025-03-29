@@ -1,0 +1,23 @@
+<div class="simple-form">
+  <h3>Pesquisa por Data</h3>
+  
+  <mat-form-field>
+    <mat-label>Data</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Seção</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let secao of secoes" [value]="secao.value">
+        {{secao.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="pesquisar()">
+    Pesquisar
+  </button>
+</div> 

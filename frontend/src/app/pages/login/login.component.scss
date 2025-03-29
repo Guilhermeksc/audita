@@ -1,0 +1,83 @@
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem; /* Espaço abaixo do logo */
+}
+
+.login-logo {
+  width: 80px; /* Ajuste o tamanho conforme necessário */
+  height: auto;
+}
+
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+
+  video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.login-box {
+  background: rgba(255, 255, 255); /* Fundo mais branco */
+  backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  text-align: center;
+
+  h2 {
+    color: #333; /* Cor mais escura para melhor contraste */
+    margin-bottom: 1rem;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.guest-login {
+  text-align: center;
+  margin-top: 20px; /* Adiciona um espaço entre o botão e o link */
+}
+
+.guest-link {
+  color: #888;
+  font-size: 14px;
+  cursor: pointer; /* Transforma o cursor em "mãozinha" */
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.guest-link:hover {
+  color: #555;
+  text-decoration: underline;
+}

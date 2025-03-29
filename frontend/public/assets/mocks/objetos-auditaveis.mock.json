@@ -1,0 +1,63 @@
+[
+    {
+      "nr": 1,
+      "tipo_de_servico": "Auditoria Operacional",
+      "descricao": "Avaliação da eficiência da logística",
+      "objetivo_auditoria": "Identificar gargalos",
+      "origem_demanda": "CGU",
+      "inicio": "2025-01-01",
+      "conclusao": "2025-03-15",
+      "hh": 120,
+      "situacao": "Planejada",
+      "observacoes": "Nenhuma"
+    },
+    {
+      "nr": 2,
+      "tipo_de_servico": "Auditoria Contábil",
+      "descricao": "Revisão das contas do exercício",
+      "objetivo_auditoria": "Conferir conformidade fiscal",
+      "origem_demanda": "TCU",
+      "inicio": "2025-02-10",
+      "conclusao": "2025-04-01",
+      "hh": 100,
+      "situacao": "Em andamento",
+      "observacoes": "Pendência documental"
+    },
+    {
+      "nr": 3,
+      "tipo_de_servico": "Consultoria",
+      "descricao": "Treinamento",
+      "objetivo_auditoria": "x",
+      "origem_demanda": "Solicitação da Gestão",
+      "inicio": "2025-02-10",
+      "conclusao": "2025-04-01",
+      "hh": 80,
+      "situacao": "Em andamento",
+      "observacoes": "Pendência documental"
+    },
+    {
+      "nr": 4,
+      "tipo_de_servico": "Consultoria",
+      "descricao": "Facilitação - Apoio de VISITEC",
+      "objetivo_auditoria": "x",
+      "origem_demanda": "Solicitação da Gestão",
+      "inicio": "2025-02-10",
+      "conclusao": "2025-04-01",
+      "hh": 90,
+      "situacao": "Em andamento",
+      "observacoes": "Pendência documental"
+    },
+    {
+      "nr": 5,
+      "tipo_de_servico": "Avaliação",
+      "descricao": "Revisão das contas do exercício",
+      "objetivo_auditoria": "Conferir conformidade fiscal",
+      "origem_demanda": "TCU",
+      "inicio": "2025-02-10",
+      "conclusao": "2025-04-01",
+      "hh": 55,
+      "situacao": "Em andamento",
+      "observacoes": "Pendência documental"
+    }
+  ]
+  

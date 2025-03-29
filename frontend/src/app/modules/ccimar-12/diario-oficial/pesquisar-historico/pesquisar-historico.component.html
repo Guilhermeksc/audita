@@ -1,0 +1,69 @@
+<div class="page-container">
+    <h1 class="page-title">Pesquisa Histórica do Diário Oficial</h1>
+    
+    <div class="content-wrapper">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Filtros de Pesquisa</mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <form class="search-form">
+            <div class="form-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Palavra-chave</mat-label>
+                <input matInput placeholder="Digite uma palavra-chave">
+                <mat-icon matSuffix>search</mat-icon>
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Seção</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let secao of secoes" [value]="secao.value">
+                    {{secao.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <div class="form-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Data Inicial</mat-label>
+                <input matInput [matDatepicker]="pickerInicio">
+                <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicio></mat-datepicker>
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline">
+                <mat-label>Data Final</mat-label>
+                <input matInput [matDatepicker]="pickerFim">
+                <mat-datepicker-toggle matIconSuffix [for]="pickerFim"></mat-datepicker-toggle>
+                <mat-datepicker #pickerFim></mat-datepicker>
+              </mat-form-field>
+            </div>
+  
+            <div class="button-row">
+              <button mat-raised-button color="primary" (click)="pesquisar()">
+                <mat-icon>search</mat-icon>
+                Pesquisar
+              </button>
+              <button mat-button color="warn">
+                <mat-icon>clear</mat-icon>
+                Limpar
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+  
+      <!-- Resultados serão exibidos aqui -->
+      <mat-card class="results-card">
+        <mat-card-header>
+          <mat-card-title>Resultados da Pesquisa</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="no-results">Utilize os filtros acima para pesquisar no histórico do DOU.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div> 

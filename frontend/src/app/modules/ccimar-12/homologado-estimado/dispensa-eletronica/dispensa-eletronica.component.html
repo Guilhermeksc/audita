@@ -1,0 +1,126 @@
+<div>
+    <mat-card>
+      <mat-card-content>
+        <div class="header-container">
+          <h2 class="page-title">Dispensa Eletrônica</h2>
+  
+          <div class="button-group">
+            <button mat-raised-button color="warn">
+              <mat-icon>description</mat-icon>
+              Relatório
+            </button>
+            <button mat-raised-button color="accent">
+              <mat-icon>help_outline</mat-icon>
+              Ajuda
+            </button>
+          </div>
+        </div>
+           
+        <!-- Tabela -->
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+
+          <ng-container matColumnDef="alerta">
+            <th mat-header-cell *matHeaderCellDef>Alerta</th>
+            <td mat-cell *matCellDef="let element">
+              <!-- Acessar CompraNet -->
+              <a mat-icon-button
+                 [matTooltip]="'Acessar CompraNet'"
+                 [href]="'https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=' + element.codigoUnidade + '06' + element.numeroCompra + element.anoCompra"
+                 target="_blank" rel="noopener noreferrer">
+                <mat-icon>open_in_new</mat-icon>
+              </a>
+          
+              <!-- Download -->
+              <button mat-icon-button
+                      [matTooltip]="'Baixar Documento PNCP'"
+                      (click)="baixarDocumento(element)">
+                <mat-icon>download</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sequencialCompra">
+            <th mat-header-cell *matHeaderCellDef>Sequencial PNCP</th>
+            <td mat-cell *matCellDef="let element">{{ element.sequencialCompra }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="anoCompra">
+            <th mat-header-cell *matHeaderCellDef>Ano</th>
+            <td mat-cell *matCellDef="let element">{{ element.anoCompra }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="numeroCompra">
+            <th mat-header-cell *matHeaderCellDef>Número</th>
+            <td mat-cell *matCellDef="let element">{{ element.numeroCompra }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="processo">
+            <th mat-header-cell *matHeaderCellDef>NUP</th>
+            <td mat-cell *matCellDef="let element">{{ element.processo }}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="codigoUnidade">
+            <th mat-header-cell *matHeaderCellDef>UASG</th>
+            <td mat-cell *matCellDef="let element">{{ element.codigoUnidade }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="nomeUnidade">
+            <th mat-header-cell *matHeaderCellDef>Nome da OM</th>
+            <td mat-cell *matCellDef="let element">{{ element.nomeUnidade }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="ufSigla">
+            <th mat-header-cell *matHeaderCellDef>UF</th>
+            <td mat-cell *matCellDef="let element">{{ element.ufSigla }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="valorTotalHomologado">
+            <th mat-header-cell *matHeaderCellDef>Valor Homologado</th>
+            <td mat-cell *matCellDef="let element">{{ element.valorTotalHomologado }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="modoDisputaNome">
+            <th mat-header-cell *matHeaderCellDef>Com disputa?</th>
+            <td mat-cell *matCellDef="let element" [ngStyle]="element.modoDisputaNome === 'Não se aplica' ? {'color': 'red', 'font-weight': 'bold'} : {}">
+              {{ element.modoDisputaNome }}
+            </td>
+          </ng-container>
+                   
+
+          <ng-container matColumnDef="amparoLegal.nome">
+            <th mat-header-cell *matHeaderCellDef>Dispositivo Legal</th>
+            <td mat-cell *matCellDef="let element">{{ element.amparoLegal.nome }}</td>
+          </ng-container>    
+
+          <ng-container matColumnDef="acao">
+            <th mat-header-cell *matHeaderCellDef>Ação</th>
+            <td mat-cell *matCellDef="let element">
+              <!-- Acessar CompraNet -->
+              <a mat-icon-button
+                 [matTooltip]="'Acessar CompraNet'"
+                 [href]="'https://cnetmobile.estaleiro.serpro.gov.br/comprasnet-web/public/compras/acompanhamento-compra?compra=' + element.codigoUnidade + '06' + element.numeroCompra + element.anoCompra"
+                 target="_blank" rel="noopener noreferrer">
+                <mat-icon>open_in_new</mat-icon>
+              </a>
+          
+              <!-- Download -->
+              <button mat-icon-button
+                      [matTooltip]="'Baixar Documento PNCP'"
+                      (click)="baixarDocumento(element)">
+                <mat-icon>download</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" (dblclick)="openDetailDialog(row)">
+        </tr>
+        
+        </table>
+        
+        <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
