@@ -1,0 +1,30 @@
+FROM python:3.12-slim
+
+# Diretório de trabalho do projeto Django
+WORKDIR /opt/django
+
+# Variáveis de ambiente
+ENV VIRTUAL_ENV=/opt/django-venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+ENV DJANGO_SETTINGS_MODULE=backend.settings
+
+# Instala dependências do sistema mínimas para build
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instala dependências do projeto
+COPY backend/django/requirements.txt .
+RUN python -m venv $VIRTUAL_ENV && \
+    pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+# Copia o projeto Django
+COPY backend/django/ .
+
+# Coleta os arquivos estáticos
+RUN python manage.py collectstatic --noinput
+
+# Executa o Gunicorn no contêiner
+CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]
