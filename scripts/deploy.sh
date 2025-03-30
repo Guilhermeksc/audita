@@ -9,6 +9,13 @@ cd "$BASE_DIR"
 echo "Atualizando o projeto..."
 git pull || { echo "Erro ao atualizar o projeto."; exit 1; }
 
+# Compila o frontend Angular
+echo "Compilando o frontend Angular..."
+cd frontend
+npm install --omit=dev
+npm run build -- --configuration=production
+cd "$BASE_DIR"
+
 # Constrói e inicia os containers, removendo os órfãos
 echo "Construindo e iniciando os containers..."
 yes | docker-compose up -d --build --remove-orphans
