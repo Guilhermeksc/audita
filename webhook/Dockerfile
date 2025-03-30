@@ -4,6 +4,8 @@ RUN apk add --no-cache git
 WORKDIR /src
 RUN git clone https://github.com/adnanh/webhook.git
 WORKDIR /src/webhook
+# Remove a diretiva "toolchain" do go.mod
+RUN sed -i '/^toolchain/d' go.mod
 RUN go build -o /webhook
 
 # Etapa final
