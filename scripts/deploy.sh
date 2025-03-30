@@ -11,7 +11,7 @@ git pull || { echo "Erro ao atualizar o projeto."; exit 1; }
 
 # Constrói e inicia os containers, removendo os órfãos
 echo "Construindo e iniciando os containers..."
-docker-compose up -d --build --remove-orphans
+yes | docker-compose up -d --build --remove-orphans
 
 # Executa as migrações e coleta de arquivos estáticos no container Django
 echo "Aplicando migrações e coletando arquivos estáticos..."
