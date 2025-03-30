@@ -120,16 +120,16 @@ services:
       - audita-net
 
   webhook:
-    image: adnanh/webhook
+    build: ./webhook
     container_name: webhook
     volumes:
       - ./webhook.json:/etc/webhook.json:ro
       - ./scripts/deploy.sh:/deploy.sh:ro
     ports:
       - "9000:9000"
-    command: -hooks=/etc/webhook.json -port=9000
     networks:
       - audita-net
+
       
 volumes:
   postgres-db-volume:
