@@ -10,7 +10,13 @@ STATIC_ROOT = Path(os.getenv("STATIC_ROOT", BASE_DIR / "staticfiles"))
 
 SECRET_KEY = os.getenv("SECRET_KEY", "insecure-secret-key")
 DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
+
+ALLOWED_HOSTS=[
+    'localhost',
+    '127.0.0.1',
+    'auditapro.com.br',
+    'www.auditapro.com.br',
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -24,6 +30,7 @@ INSTALLED_APPS = [
     'backend.users',
     'backend.diario',
 ]
+
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:4200',  # Angular dev server
