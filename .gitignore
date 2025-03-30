@@ -27,4 +27,5 @@ staticfiles/
 dist/
 build/
 
-b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW.pub
+*webhookscret.json
+

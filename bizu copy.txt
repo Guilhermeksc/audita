@@ -1,3 +1,8 @@
+git fetch origin
+git reset --hard origin/main
+git clean -fd
+
+
 docker-compose down
 docker-compose up -d --build
 
@@ -22,3 +27,24 @@ docker-compose logs nginx
 docker exec -it audita_airflow-webserver_1  sh
 apk add curl 
 curl http://airflow-webserver:8080/health
+
+
+
+curl -X POST http://195.200.1.112:9000/hooks/deploy-audita
+
+7f143b9b3a5cab4b15070bb8f35ac79d95354e390002ff3ca13e7f6c635e5103
+
+[
+  {
+    "id": "deploy-audita",
+    "execute-command": "/root/deploy.sh",
+    "command-working-directory": "/root",
+    "response-message": "✅ Iniciando deploy da Audita...",
+    "trigger-rule": {
+      "match": {
+        "type": "payload-hash-sha256",
+        "secret": "7f143b9b3a5cab4b15070bb8f35ac79d95354e390002ff3ca13e7f6c635e5103"
+      }
+    }
+  }
+]
