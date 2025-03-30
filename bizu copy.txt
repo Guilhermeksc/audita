@@ -1,0 +1,24 @@
+docker-compose down
+docker-compose up -d --build
+
+
+ssh root@195.200.1.112
+
+http://195.200.1.112:8080
+
+
+## problemas na visualização dos arquivos dos assets
+
+chmod -R 755 ./frontend/dist/browser
+find ./frontend/dist/browser -type f -exec chmod 644 {} \;
+
+chown -R 101:101 ./frontend/dist/browser
+
+docker-compose exec django python manage.py collectstatic --noinput
+
+docker-compose logs nginx
+
+
+docker exec -it audita_airflow-webserver_1  sh
+apk add curl 
+curl http://airflow-webserver:8080/health

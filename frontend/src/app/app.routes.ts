@@ -29,8 +29,8 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard],  
-    canActivateChild: [AuthChildGuard],  
+    // canActivate: [AuthGuard],  
+    // canActivateChild: [AuthChildGuard],  
     children: [
       // CCIMAR-10
       {

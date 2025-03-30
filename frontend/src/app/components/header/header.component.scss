@@ -78,3 +78,10 @@
     padding-right: 50px; /* Adiciona um espaço extra no final */
   }
   
+  .brand-logo-pinwheel {
+    transition: transform 1s linear;
+  }
+  .navbar-brand:hover .brand-logo-pinwheel {
+    transform: rotate(360deg);
+  }
+  
