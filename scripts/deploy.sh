@@ -22,7 +22,8 @@ fi
 npm install
 
 # Desativa prompt interativo do Angular CLI
-npx ng config -g cli.interactive false
+npx ng config cli.interactive false
+
 
 # Build de produção
 npm run build -- --configuration=production
