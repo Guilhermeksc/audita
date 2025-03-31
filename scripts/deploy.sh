@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e
+exec >> /tmp/deploy_hook.log 2>&1
+echo "=== Deploy iniciado em $(date) ==="
 
 # Define o diretório base (raiz do repositório)
 BASE_DIR="$(dirname "$(realpath "$0")")/.."
