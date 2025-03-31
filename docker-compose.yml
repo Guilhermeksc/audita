@@ -201,16 +201,16 @@ services:
       - "443:443"
     depends_on:
       django:
-        condition: service_started
+        condition: service_healthy
       airflow-webserver:
-        condition: service_started
+        condition: service_healthy
       webhook:
         condition: service_started
     networks:
       - audita-net
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "nginx", "-t"]
+      test: ["CMD", "curl", "-sf", "http://localhost:80/"]
       interval: 10s
       timeout: 5s
       retries: 3

@@ -8,6 +8,8 @@ docker-compose up -d --build
 
 bash ./scripts/deploy.sh
 
+docker-compose logs nginx
+
 ssh root@195.200.1.112
 
 http://195.200.1.112:8080
