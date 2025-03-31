@@ -36,9 +36,9 @@ COPY deploy.sh /deploy.sh
 
 # Setup permissions
 RUN chmod +x /entrypoint.sh /deploy.sh && \
-    # Ensure docker socket can be accessed
-    addgroup -S docker && \
-    adduser -S webhook -G docker && \
+    # Create webhook user (docker group already exists in Alpine with docker package)
+    adduser -S webhook && \
+    adduser webhook docker && \
     # Allow webhook user to run docker commands and deploy script
     echo "webhook ALL=(ALL) NOPASSWD: /usr/bin/docker, /usr/bin/docker-compose, /deploy.sh" > /etc/sudoers.d/webhook && \
     chmod 0440 /etc/sudoers.d/webhook && \
@@ -56,7 +56,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:9000/healthz || exit 1
 
 # Run entrypoint script
-ENTRYPOINT ["/entrypoint.sh"]
-
-
-
+ENTRYPOINT ["/entrypoint.sh"] 
