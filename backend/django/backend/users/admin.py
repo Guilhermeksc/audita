@@ -26,6 +26,13 @@ class UsuarioAdmin(UserAdmin):
     search_fields = ('nip', 'nome_completo', 'nome_de_guerra', 'email')
     filter_horizontal = ('perfis',)  # interface amigável para ManyToMany
 
+
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        if not obj.perfil_ativo and obj.perfis.exists():
+            obj.perfil_ativo = obj.perfis.first()
+            obj.save()
+            
     def get_perfis(self, obj):
         return ", ".join(p.nome for p in obj.perfis.all())
     get_perfis.short_description = 'Perfis'
@@ -55,13 +62,15 @@ class UsuarioAdmin(UserAdmin):
             }),
         )
 
+        # perfil_ativo será apenas editável após criação
+        if obj:  # Ou seja, já foi salvo
+            base_fieldsets[1][1]['fields'] += ('perfil_ativo',)
+
         if request.user.is_superuser:
-            # Adiciona 'perfis' em uma nova seção para superusuários
             return base_fieldsets + (('Perfis do Sistema', {'fields': ('perfis',)}),)
         return base_fieldsets
 
-
     def get_readonly_fields(self, request, obj=None):
-        if not request.user.is_superuser:
-            return self.readonly_fields + ('is_staff', 'is_superuser')
+        if obj is None:
+            return ['perfil_ativo']
         return super().get_readonly_fields(request, obj)

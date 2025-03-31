@@ -6,6 +6,15 @@ git clean -fd
 docker-compose down
 docker-compose up -d --build
 
+
+docker-compose down --remove-orphans
+docker-compose up -d --build --remove-orphans
+
+
+docker-compose exec django python manage.py migrate
+
+
+
 bash ./scripts/deploy.sh
 
 docker-compose logs nginx
