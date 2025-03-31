@@ -25,13 +25,16 @@ if [ -z "$WEBHOOK_SECRET" ]; then
   exit 1
 fi
 
-# Setup healthcheck endpoint
+# Setup healthcheck endpoint and webhook directory
 mkdir -p /tmp/webhook
 echo '{"status":"ok"}' > /tmp/webhook/healthz
 cd /tmp/webhook
 
-# Create hooks directory if it doesn't exist
-mkdir -p /tmp/webhook/hooks
+# Check Docker availability
+if ! docker info >/dev/null 2>&1; then
+  echo "WARNING: Docker daemon not accessible. The webhook may not be able to execute the deploy script." | tee -a $LOG_DIR/error.log
+  # Not exiting here to allow the webhook to start regardless
+fi
 
 # Process template and create webhook configuration
 echo "Configuring webhook with template"
@@ -40,6 +43,15 @@ envsubst < /webhook.template.json > /tmp/webhook/hooks.json
 # Display webhook configuration (with secrets redacted)
 cat /tmp/webhook/hooks.json | sed 's/"secret": "[^"]*"/"secret": "***REDACTED***"/g' | tee -a $LOG_DIR/startup.log
 
+# Test webhook configuration
+echo "Testing webhook configuration"
+if ! webhook -hooks /tmp/webhook/hooks.json -test; then
+  echo "WARNING: Webhook configuration test failed. Proceeding anyway." | tee -a $LOG_DIR/error.log
+fi
+
+# Make deploy script executable (just to be sure)
+chmod +x /deploy.sh
+
 # Start webhook server
 echo "Starting webhook server on port 9000"
 exec webhook \
@@ -47,8 +59,9 @@ exec webhook \
   -hooks /tmp/webhook/hooks.json \
   -hotreload \
   -port 9000 \
+  -ip "0.0.0.0" \
   -urlprefix webhook \
   -secure-urlprefix webhook \
-  -http-methods POST \
+  -http-methods GET,POST \
   -template \
   -header Content-Type=application/json

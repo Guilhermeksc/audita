@@ -12,7 +12,8 @@ RUN apk add --no-cache \
     gettext \
     tzdata \
     ca-certificates \
-    wget
+    wget \
+    sudo
 
 # Install webhook (release 2.8.1 or check for the latest)
 RUN wget -O webhook.tar.gz https://github.com/adnanh/webhook/releases/download/2.8.1/webhook-linux-amd64.tar.gz && \
@@ -23,25 +24,26 @@ RUN wget -O webhook.tar.gz https://github.com/adnanh/webhook/releases/download/2
 # Set timezone
 ENV TZ=America/Sao_Paulo
 
-# Create healthcheck endpoint
-RUN mkdir -p /var/www/html && \
-    echo '{"status":"ok"}' > /var/www/html/healthz
+# Create directories
+RUN mkdir -p /var/www/html /var/log/webhook /tmp/webhook && \
+    echo '{"status":"ok"}' > /var/www/html/healthz && \
+    echo '{"status":"ok"}' > /tmp/webhook/healthz
 
 # Copy configuration files
 COPY webhook.template.json /webhook.template.json
 COPY entrypoint.sh /entrypoint.sh
 COPY deploy.sh /deploy.sh
 
-# Create non-root user
-RUN addgroup -S webhook && \
-    adduser -S -G webhook webhook
-
-# Set proper permissions
+# Setup permissions
 RUN chmod +x /entrypoint.sh /deploy.sh && \
-    chown -R webhook:webhook /var/www/html
-
-# Use non-root user for security
-USER webhook
+    # Ensure docker socket can be accessed
+    addgroup -S docker && \
+    adduser -S webhook -G docker && \
+    # Allow webhook user to run docker commands and deploy script
+    echo "webhook ALL=(ALL) NOPASSWD: /usr/bin/docker, /usr/bin/docker-compose, /deploy.sh" > /etc/sudoers.d/webhook && \
+    chmod 0440 /etc/sudoers.d/webhook && \
+    # Set proper ownership
+    chown -R webhook:docker /var/www/html /var/log/webhook /tmp/webhook
 
 # Expose webhook port
 EXPOSE 9000

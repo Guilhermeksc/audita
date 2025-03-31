@@ -44,13 +44,14 @@
     },
     {
       "id": "healthz",
-      "execute-command": "cat",
+      "execute-command": "echo",
       "command-working-directory": "/tmp/webhook",
       "response-message": "",
+      "include-command-output-in-response": true,
       "pass-arguments-to-command": [
         {
           "source": "string",
-          "name": "healthz"
+          "name": "{\"status\":\"ok\"}"
         }
       ],
       "trigger-rule": {
