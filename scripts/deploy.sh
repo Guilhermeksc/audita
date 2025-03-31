@@ -11,9 +11,17 @@ git pull || { echo "Erro ao atualizar o projeto."; exit 1; }
 
 # Compila o frontend Angular
 echo "Compilando o frontend Angular..."
-cd frontend
-npm install --omit=dev
+cd "$BASE_DIR/frontend"
+
+if [ ! -d "node_modules" ]; then
+  echo "Instalando dependências do Angular (node_modules não encontrado)..."
+  npm install
+fi
+
+# Mesmo que tenha node_modules, atualiza pacotes para garantir build correto
+npm install
 npm run build -- --configuration=production
+
 cd "$BASE_DIR"
 
 # Constrói e inicia os containers, removendo os órfãos
