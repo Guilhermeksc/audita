@@ -27,17 +27,12 @@ npm run build -- --configuration=production
 cd "$BASE_DIR"
 
 # Remove containers, redes e volumes antigos
-#echo "Removendo containers e volumes antigos..."
-# docker-compose down -v
-
-# Remove apenas o container antigo do Django (sem afetar volumes)
-echo "Removendo container antigo do Django..."
-docker-compose rm -f -s -v django || true
+echo "Removendo containers e volumes antigos..."
+docker-compose down -v
 
 # Constrói e inicia os containers, removendo os órfãos
 echo "Construindo e iniciando os containers..."
 yes | docker-compose up -d --build --remove-orphans
-
 
 
 # Executa as migrações e coleta de arquivos estáticos no container Django
