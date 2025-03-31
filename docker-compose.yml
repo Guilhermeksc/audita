@@ -123,8 +123,7 @@ services:
     build: ./webhook
     container_name: webhook
     volumes:
-      - ./webhook.json:/etc/webhook.json:ro
-      - /host-deploy.sh:/deploy.sh:ro
+      - /root/audita/deploy.sh:/deploy.sh:ro  # Certifique-se que o script existe e tem permissão +x
     ports:
       - "9000:9000"
     networks:
