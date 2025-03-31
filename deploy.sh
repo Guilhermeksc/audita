@@ -1,56 +1,43 @@
 #!/bin/bash
 set -e
+
 exec >> /tmp/deploy_hook.log 2>&1
 echo "=== Deploy iniciado em $(date) ==="
 
-# Define o diretório base (raiz do repositório)
-BASE_DIR="$(dirname "$(realpath "$0")")/.."
+BASE_DIR="/root/audita"
 cd "$BASE_DIR"
 
-# Atualiza o projeto via Git
-echo "Atualizando o projeto..."
+echo "[1/5] Atualizando código via git..."
 git pull || { echo "Erro ao atualizar o projeto."; exit 1; }
 
-# Compila o frontend Angular
-echo "Compilando o frontend Angular..."
+echo "[2/5] Compilando frontend Angular..."
 cd "$BASE_DIR/frontend"
 
 if [ ! -d "node_modules" ]; then
-  echo "Instalando dependências do Angular (node_modules não encontrado)..."
+  echo "Instalando dependências do Angular..."
   npm install
 fi
 
-# Mesmo que tenha node_modules, atualiza pacotes para garantir build correto
 npm install
-
-# Build de produção
 npm run build -- --configuration=production
 
 cd "$BASE_DIR"
 
-# Remove containers, redes e volumes antigos
-echo "Removendo containers e volumes antigos..."
+echo "[3/5] Reconstruindo containers com Docker..."
 docker-compose down -v
-
-# Constrói e inicia os containers, removendo os órfãos
-echo "Construindo e iniciando os containers..."
 yes | docker-compose up -d --build --remove-orphans
 
-
-# Executa as migrações e coleta de arquivos estáticos no container Django
-echo "Aplicando migrações e coletando arquivos estáticos..."
+echo "[4/5] Aplicando migrações e coletando arquivos estáticos..."
 docker exec django python manage.py migrate
 docker exec django python manage.py collectstatic --noinput
 
-# Reinicia os serviços necessários
-echo "Reiniciando os serviços: nginx, django, airflow-webserver..."
+echo "[5/5] Reiniciando serviços..."
 docker restart nginx django airflow-webserver
 
-# Testa se o domínio está respondendo corretamente
-echo "Verificando o domínio https://auditapro.com.br..."
+echo "[✔] Testando domínio..."
 HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://auditapro.com.br)
 if [ "$HTTP_STATUS" -eq 200 ]; then
-  echo "Domínio respondendo corretamente (HTTP 200)."
+  echo "✅ Domínio respondendo corretamente (HTTP 200)."
 else
-  echo "Erro: domínio retornou HTTP $HTTP_STATUS."
+  echo "❌ Erro: domínio retornou HTTP $HTTP_STATUS."
 fi

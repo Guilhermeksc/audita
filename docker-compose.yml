@@ -122,8 +122,10 @@ services:
   webhook:
     build: ./webhook
     container_name: webhook
+    env_file:
+      - .env
     volumes:
-      - /root/audita/deploy.sh:/deploy.sh:ro  # Certifique-se que o script existe e tem permissão +x
+      - /root/audita/deploy.sh:/deploy.sh:ro
     ports:
       - "9000:9000"
     networks:

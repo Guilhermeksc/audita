@@ -1,16 +1,12 @@
-# Etapa de build
-FROM golang:1.18-alpine AS builder
-RUN apk add --no-cache git
-WORKDIR /src
-RUN git clone https://github.com/adnanh/webhook.git
-WORKDIR /src/webhook
-# Remove a diretiva "toolchain" do go.mod
-RUN sed -i '/^toolchain/d' go.mod
-RUN go build -o /webhook
+FROM alpine
 
-# Etapa final
-FROM alpine:latest
-COPY --from=builder /webhook /usr/local/bin/webhook
-EXPOSE 9000
-ENTRYPOINT ["/usr/local/bin/webhook"]
-CMD ["-hooks=/etc/webhook.json", "-port=9000"]
+RUN apk add --no-cache curl bash git coreutils
+
+# Copia template e script de entrada
+COPY webhook.template.json /webhook.template.json
+COPY entrypoint.sh /entrypoint.sh
+COPY deploy.sh /deploy.sh
+
+RUN chmod +x /entrypoint.sh /deploy.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
