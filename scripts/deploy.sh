@@ -20,6 +20,11 @@ fi
 
 # Mesmo que tenha node_modules, atualiza pacotes para garantir build correto
 npm install
+
+# Desativa prompt interativo do Angular CLI
+npx ng config -g cli.interactive false
+
+# Build de produção
 npm run build -- --configuration=production
 
 cd "$BASE_DIR"
