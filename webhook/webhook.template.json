@@ -3,14 +3,63 @@
       "id": "deploy",
       "execute-command": "/deploy.sh",
       "command-working-directory": "/",
-      "response-message": "Deploy iniciado.",
+      "response-message": "Deploy iniciado. Verifique os logs para acompanhar o progresso.",
+      "success-http-response-code": 202,
+      "include-command-output-in-response": false,
+      "pass-environment-to-command": [
+        {
+          "source": "entire-payload",
+          "envname": "WEBHOOK_PAYLOAD"
+        },
+        {
+          "source": "string",
+          "name": "DEPLOY_TRIGGERED_BY",
+          "envname": "DEPLOY_TRIGGERED_BY"
+        }
+      ],
+      "trigger-rule": {
+        "and": [
+          {
+            "match": {
+              "type": "payload-hash-sha256",
+              "secret": "${WEBHOOK_SECRET}",
+              "parameter": {
+                "source": "header",
+                "name": "X-Hub-Signature-256"
+              }
+            }
+          },
+          {
+            "match": {
+              "type": "value",
+              "value": "refs/heads/main",
+              "parameter": {
+                "source": "payload",
+                "name": "ref"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "healthz",
+      "execute-command": "cat",
+      "command-working-directory": "/tmp/webhook",
+      "response-message": "",
+      "pass-arguments-to-command": [
+        {
+          "source": "string",
+          "name": "healthz"
+        }
+      ],
       "trigger-rule": {
         "match": {
-          "type": "payload-hash-sha256",
-          "secret": "${WEBHOOK_SECRET}",
+          "type": "value",
+          "value": "GET",
           "parameter": {
-            "source": "header",
-            "name": "X-Hub-Signature-256"
+            "source": "request",
+            "name": "method"
           }
         }
       }
