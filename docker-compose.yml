@@ -125,7 +125,8 @@ services:
     env_file:
       - .env
     volumes:
-      - /root/audita/deploy.sh:/deploy.sh:ro
+      - ./webhook/deploy.sh:/deploy.sh:ro
+      - ./.env:/env/.env:ro
     ports:
       - "9000:9000"
     networks:

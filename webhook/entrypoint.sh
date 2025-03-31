@@ -1,13 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
-# Substitui a variável ${WEBHOOK_SECRET} no template
-echo "🔐 Gerando webhook.json com WEBHOOK_SECRET..."
-export WEBHOOK_SECRET=${WEBHOOK_SECRET}
+# Exporta variáveis do .env se necessário
+export $(grep -v '^#' /env/.env | xargs)
+
+# Substitui a secret no webhook.json
 envsubst < /webhook.template.json > /webhook.json
 
-echo "✅ webhook.json gerado:"
-cat /webhook.json
-
-echo "🚀 Iniciando webhook listener..."
+# Inicia o webhook
 exec webhook -verbose -hooks /webhook.json -hotreload
