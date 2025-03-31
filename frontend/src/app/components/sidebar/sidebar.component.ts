@@ -29,8 +29,7 @@ export class SidebarComponent {
   isOpen = true;
 
   menuItems: MenuItem[] = [
-    { title: 'CCIMAR-10', icon: 'assets/icons/svg/menu_icon.svg', children: ['Planejamento'], expanded: true },
-    { title: 'CCIMAR-11', icon: 'assets/icons/svg/menu_icon.svg', children: [
+    { title: 'PAINT-RAINT', icon: 'assets/icons/svg/menu_icon.svg', children: [
       {
         title: 'PAINT',
         children: [
@@ -44,6 +43,39 @@ export class SidebarComponent {
       },
       'RAINT'
     ], expanded: true },
+    { title: 'PLANEJAMENTO', icon: 'assets/icons/svg/menu_icon.svg', children: ['Planejamento'], expanded: true },
+    { title: 'EXECUÇÃO', icon: 'assets/icons/svg/menu_icon.svg', children: [
+      'Testes com base na Matriz de Planejamento',
+      'PT',
+      'Matriz de Achados',
+      {
+        title: 'Relatórios',
+        children: ['Relatório Preliminar', 'Relatório Final'],
+        expanded: false
+      }
+    ],
+    expanded: true
+    },   
+    { title: 'MONITORAMENTO', icon: 'assets/icons/svg/menu_icon.svg', children: [
+      'Monitoramento'
+    ],
+    expanded: true
+    },
+    { title: 'PGMQ', icon: 'assets/icons/svg/menu_icon.svg', children: [
+      'Acompanhamento das etapas do processo de Auditoria',
+      'Alerta de supervisionamento à conclusão de cada etapa',
+      'Avaliação periódica (modelo IA-CM)',
+    ],
+    expanded: true
+    }, 
+    { title: 'ANÁLISE DE RISCOS', icon: 'assets/icons/svg/menu_icon.svg', children: [
+      'Inserção de dados do TCU/TCE para subsidiar o PAINT (Matriz de riscos)',
+      'Definição de escopo',
+      'Importar planilhas de acompanhamento retroativas',
+      'Extração de relatórios para Solicitação de Auditoria e para COFAMAR',
+    ],
+    expanded: true
+    },             
     { title: 'CCIMAR-12', icon: 'assets/icons/svg/menu_icon.svg', children: [
         {
           title: 'Diário Oficial da União (DOU)',

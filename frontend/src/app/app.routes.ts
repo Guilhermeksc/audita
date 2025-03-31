@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PlanejamentoComponent } from './modules/ccimar-10/planejamento/planejamento.component';
-import { PaintComponent } from './modules/ccimar-11/paint/paint.component';
-import { RaintComponent } from './modules/ccimar-11/raint/raint.component';
+import { PlanejamentoComponent } from './modules/planejamento/planejamento/planejamento.component';
+import { PaintComponent } from './modules/paint-raint/paint/paint.component';
+import { RaintComponent } from './modules/paint-raint/raint/raint.component';
 import { DiarioOficialComponent } from './modules/ccimar-12/diario-oficial/diario-oficial.component';
 import { AltaMaterialidadeComponent } from './modules/ccimar-12/alta-materialidade/alta-materialidade.component';
 import { HomologadoEstimadoComponent } from './modules/ccimar-12/homologado-estimado/homologado-estimado.component';
@@ -15,11 +15,18 @@ import { DispensaEletronicaComponent } from './modules/ccimar-12/homologado-esti
 import { PregaoEletronicoComponent } from './modules/ccimar-12/homologado-estimado/pregao-eletronico/pregao-eletronico.component';
 import { ConcorrenciaComponent } from './modules/ccimar-12/homologado-estimado/concorrencia/concorrencia.component';
 import { CredenciamentoComponent } from './modules/ccimar-12/homologado-estimado/credenciamento/credenciamento.component';
-import { CadastroObjetosAuditaveisComponent } from './modules/ccimar-11/paint/cadastro-objetos-auditaveis/cadastro-objetos-auditaveis.component';
-import { AcoesOrcamentariasComponent } from './modules/ccimar-11/paint/acoes-orcamentarias/acoes-orcamentarias.component';
-import { AnexoAObjetosAuditaveisComponent } from './modules/ccimar-11/paint/anexo-a-objetos-auditaveis/anexo-a-objetos-auditaveis.component';
-import { AnexoBOmRepresentativasComponent } from './modules/ccimar-11/paint/anexo-b-om-representativas/anexo-b-om-representativas.component';
-import { ObjetivosNavaisComponent } from './modules/ccimar-11/paint/objetivos-navais/objetivos-navais.component';
+import { CadastroObjetosAuditaveisComponent } from './modules/paint-raint/paint/cadastro-objetos-auditaveis/cadastro-objetos-auditaveis.component';
+import { AcoesOrcamentariasComponent } from './modules/paint-raint/paint/acoes-orcamentarias/acoes-orcamentarias.component';
+import { AnexoAObjetosAuditaveisComponent } from './modules/paint-raint/paint/anexo-a-objetos-auditaveis/anexo-a-objetos-auditaveis.component';
+import { AnexoBOmRepresentativasComponent } from './modules/paint-raint/paint/anexo-b-om-representativas/anexo-b-om-representativas.component';
+import { ObjetivosNavaisComponent } from './modules/paint-raint/paint/objetivos-navais/objetivos-navais.component';
+import { ExecucaoComponent } from './modules/execucao/execucao.component';
+import { TestesMatrizPlanejamentoComponent } from './modules/execucao/testes-matriz-planejamento/testes-matriz-planejamento.component';
+import { PtComponent } from './modules/execucao/pt/pt.component';
+import { MatrizAchadosComponent } from './modules/execucao/matriz-achados/matriz-achados.component';
+import { RelatorioFinalComponent } from './modules/execucao/relatorios/relatorio-final/relatorio-final.component';
+import { RelatoriosComponent } from './modules/execucao/relatorios/relatorios.component';
+import { RelatorioPreliminarComponent } from './modules/execucao/relatorios/relatorio-preliminar/relatorio-preliminar.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,14 +39,9 @@ export const routes: Routes = [
     // canActivate: [AuthGuard],  
     // canActivateChild: [AuthChildGuard],  
     children: [
-      // CCIMAR-10
+      // PAINT-RAINT
       {
-        path: 'ccimar-10',
-        children: [{ path: 'planejamento', component: PlanejamentoComponent }]
-      },
-      // CCIMAR-11
-      {
-        path: 'ccimar-11',
+        path: 'paint-raint',
         children: [
           { 
             path: 'paint',
@@ -53,6 +55,29 @@ export const routes: Routes = [
             ]
           },
           { path: 'raint', component: RaintComponent }
+        ]
+      },
+      // PLANEJAMENTO
+      {
+        path: 'planejamento',
+        children: [{ path: 'planejamento', component: PlanejamentoComponent }]
+      },
+      // EXECUÇÂO
+      {
+        path: 'execucao',
+        children: [
+          { path: 'testes-matriz-planejamento', component: TestesMatrizPlanejamentoComponent },
+          { path: 'pt', component: PtComponent },
+          { path: 'matriz-achados', component: MatrizAchadosComponent },
+          { 
+            path: 'relatorios',
+            children: [
+              { path: '', component: RelatoriosComponent },
+              { path: 'relatorio-preliminar', component: RelatorioPreliminarComponent },
+              { path: 'relatorio-final', component: RelatorioFinalComponent }
+            ]
+          }
+          
         ]
       },
       // CCIMAR-12

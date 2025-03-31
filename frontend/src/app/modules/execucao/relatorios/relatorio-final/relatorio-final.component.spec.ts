@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Ccimar10Component } from './ccimar-10.component';
+import { RelatorioFinalComponent } from './relatorio-final.component';
 
-describe('Ccimar10Component', () => {
-  let component: Ccimar10Component;
-  let fixture: ComponentFixture<Ccimar10Component>;
+describe('RelatorioFinalComponent', () => {
+  let component: RelatorioFinalComponent;
+  let fixture: ComponentFixture<RelatorioFinalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Ccimar10Component]
+      imports: [RelatorioFinalComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Ccimar10Component);
+    fixture = TestBed.createComponent(RelatorioFinalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

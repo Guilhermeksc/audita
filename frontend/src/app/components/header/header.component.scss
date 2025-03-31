@@ -1,87 +1,206 @@
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    background-color: #1e1e1e;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    border-bottom: 1px solid #555; /* Adiciona a linha cinza na parte inferior */
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
 
-  .left-section {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  .toggle-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-  }
-  
-  .toggle-btn img {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-  }
+.menu-btn {
+  display: none; /* Oculto em telas maiores */
+}
 
-  .app-title h1 {
-    font-size: 18px;
-    margin: 0;
-  }
-  
+/* Efeito material para o header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #1e1e1e;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #555;
+  z-index: 1000;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efeito específico para telas de celular */
+@media (max-width: 600px) {
   .user-info {
-    display: flex;
-    align-items: center;
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    flex-direction: column;
     gap: 10px;
+    background-color: #1e1e1e;
+    border: 1px solid #555;
+    padding: 10px;
+    z-index: 1001;
   }
-  
-  .username {
-    font-weight: bold;
-    margin-right: 10px;
+  .user-info.active {
+    display: flex;
   }
-  
-  .btn {
+  .menu-btn {
+    display: inline-block;
     background: none;
     border: none;
     color: white;
     cursor: pointer;
     padding: 5px 10px;
-    transition: 0.3s;
   }
-  
-  .btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
+}
+
+
+
+/* Efeito específico para tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .header {
+    height: 45px;
+    background-color: #1c1c1c;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+    padding: 0 15px;
   }
-  
-  .logout {
-    color: red;
+  .user-info {
+    gap: 8px;
   }
-  
-  .version {
-    margin-left: 10px;
-    font-size: 12px;
-    opacity: 0.7;
-    padding-right: 50px; /* Adiciona um espaço extra no final */
+  .username {
+    font-size: 14px;
   }
-  
-  .brand-logo-pinwheel {
-    transition: transform 1s linear;
+}
+
+
+.header:hover {
+  background-color: #2e2e2e;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.toggle-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.app-title h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+/* User info visível em telas maiores */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.username {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.airflow-link,
+.admin-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 5px;
+}
+
+
+.btn {
+  display: inline-block;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.logout {
+  color: red;
+}
+
+.version {
+  margin-left: 10px;
+  font-size: 12px;
+  opacity: 0.7;
+  padding-right: 50px;
+}
+
+.brand-logo-pinwheel {
+  transition: transform 1s linear;
+}
+
+.navbar-brand:hover .brand-logo-pinwheel {
+  transform: rotate(360deg);
+}
+
+.header h1 img {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+/* Exibir botão Menu e adaptar user-info em telas de tablet e celular */
+@media (max-width: 1024px) {
+  .menu-btn {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
   }
-  .navbar-brand:hover .brand-logo-pinwheel {
-    transform: rotate(360deg);
+  /* Oculta o conteúdo e exibe via menu */
+  .user-info {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #1e1e1e;
+    border: 1px solid #555;
+    padding: 10px;
+    z-index: 1001;
   }
-  
+  .user-info.active {
+    display: flex;
+  }
+  .header {
+    height: 45px;
+  }
+  .username {
+    font-size: 14px;
+  }
+}

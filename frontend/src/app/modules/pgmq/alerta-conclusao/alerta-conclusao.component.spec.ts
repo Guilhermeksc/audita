@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Ccimar11Component } from './ccimar-11.component';
+import { AlertaConclusaoComponent } from './alerta-conclusao.component';
 
-describe('Ccimar11Component', () => {
-  let component: Ccimar11Component;
-  let fixture: ComponentFixture<Ccimar11Component>;
+describe('AlertaConclusaoComponent', () => {
+  let component: AlertaConclusaoComponent;
+  let fixture: ComponentFixture<AlertaConclusaoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Ccimar11Component]
+      imports: [AlertaConclusaoComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Ccimar11Component);
+    fixture = TestBed.createComponent(AlertaConclusaoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

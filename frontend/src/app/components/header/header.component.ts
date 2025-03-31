@@ -20,13 +20,18 @@ export class HeaderComponent {
   version = 'V.0.0.1';
   userName: string = 'Guest';
   perfilAtivo: string = '';
-
+  userMenuActive: boolean = false;
+  
   constructor(
     private userService: UserService,
     private sidebarService: SidebarToggleService,
     private authService: AuthService,
     private dialog: MatDialog
   ) {}
+
+  toggleUserMenu(): void {
+    this.userMenuActive = !this.userMenuActive;
+  }
 
   ngOnInit() {
     this.userName = this.userService.getUserName();
