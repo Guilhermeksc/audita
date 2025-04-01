@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Usuario, Perfil
-from .forms import CustomUserCreationForm, CustomUserChangeForm
         
 @admin.register(Perfil)
 class PerfilAdmin(admin.ModelAdmin):
@@ -11,8 +10,6 @@ class PerfilAdmin(admin.ModelAdmin):
 @admin.register(Usuario)
 class UsuarioAdmin(UserAdmin):
     model = Usuario
-    add_form = CustomUserCreationForm
-    form = CustomUserChangeForm
 
     ordering = ['nip']
     list_display = (
@@ -26,9 +23,10 @@ class UsuarioAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('nip', 'nome_completo', 'posto', 'password1', 'password2'),
+            'fields': ('nip', 'nome_completo', 'posto'),
         }),
     )
+    
     def add_view(self, request, form_url='', extra_context=None):
         import logging
         logger = logging.getLogger(__name__)
@@ -48,7 +46,10 @@ class UsuarioAdmin(UserAdmin):
         return super().add_view(request, form_url, extra_context)
 
     def save_model(self, request, obj, form, change):
+        if not change:  # está criando
+            obj.set_password("audita10")
         super().save_model(request, obj, form, change)
+
         if not obj.perfil_ativo and obj.perfis.exists():
             obj.perfil_ativo = obj.perfis.first()
             obj.save()
