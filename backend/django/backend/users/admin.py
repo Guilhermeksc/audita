@@ -1,56 +1,45 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Usuario, Perfil
-from .forms import UsuarioAdminCreateForm, CustomUserChangeForm
-   
-@admin.register(Perfil)
-class PerfilAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nome')
-    search_fields = ('nome',)
-    
-
+from .forms import CustomUserChangeForm  # apenas o de edição é necessário
 
 @admin.register(Usuario)
 class UsuarioAdmin(UserAdmin):
     model = Usuario
-    add_form = UsuarioAdminCreateForm  # usar nosso form simples
-    form = CustomUserChangeForm  # mantém o form de edição completo
+    form = CustomUserChangeForm  # usado para edição
+    add_form = None  # desativa o formulário com password1/password2
+
+    ordering = ['nip']
+    list_display = (
+        'nip', 'nome_completo', 'nome_de_guerra', 'posto',
+        'especialidade', 'nome_funcao', 'divisao', 'email',
+        'get_perfis', 'is_staff',
+    )
+    search_fields = ('nip', 'nome_completo', 'nome_de_guerra', 'email')
+    filter_horizontal = ('perfis',)
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('nip', 'nome_completo', 'posto', 'nome_funcao', 'divisao', 'email'),
+            'fields': (
+                'nip', 'password',
+                'nome_completo', 'nome_de_guerra', 'posto',
+                'especialidade', 'nome_funcao', 'divisao', 'email',
+            ),
         }),
     )
 
     def save_model(self, request, obj, form, change):
-        if not change:
-            obj.set_password("audita10")  # define senha padrão
+        # Define a senha digitada no campo password
+        raw_password = form.cleaned_data.get("password")
+        if raw_password:
+            obj.set_password(raw_password)
         super().save_model(request, obj, form, change)
 
         if not obj.perfil_ativo and obj.perfis.exists():
             obj.perfil_ativo = obj.perfis.first()
             obj.save()
 
-    
-    def add_view(self, request, form_url='', extra_context=None):
-        import logging
-        logger = logging.getLogger(__name__)
-        logger.error("🚨 Entrou no add_view() do UsuarioAdmin")
-
-        if request.method == 'POST':
-            form_class = self.get_form(request, obj=None, change=False)
-            form = form_class(request.POST)
-            if not form.is_valid():
-                logger.error("== ERROS NO FORMULÁRIO ==")
-                for field, errors in form.errors.items():
-                    logger.error(f"{field}: {errors}")
-                if form.non_field_errors():
-                    logger.error(f"Erros não relacionados a campos: {form.non_field_errors()}")
-                logger.error("== FIM DOS ERROS ==")
-
-        return super().add_view(request, form_url, extra_context)
-            
     def get_perfis(self, obj):
         return ", ".join(p.nome for p in obj.perfis.all())
     get_perfis.short_description = 'Perfis'
@@ -60,8 +49,8 @@ class UsuarioAdmin(UserAdmin):
             (None, {'fields': ('nip', 'password')}),
             ('Informações pessoais', {
                 'fields': (
-                    'nome_completo', 'nome_de_guerra', 'posto', 'especialidade',
-                    'nome_funcao', 'divisao', 'email',
+                    'nome_completo', 'nome_de_guerra', 'posto',
+                    'especialidade', 'nome_funcao', 'divisao', 'email',
                 )
             }),
             ('Permissões', {
