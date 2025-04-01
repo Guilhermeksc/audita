@@ -7,9 +7,9 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres:5432/$POSTGRES_DB
       AIRFLOW__WEBSERVER__BASE_URL: https://auditapro.com.br/airflow
     volumes:
-      - ./backend/airflow/dags:/opt/airflow/dags
-      - ./backend/airflow/logs:/opt/airflow/logs
-      - ./backend/airflow/plugins:/opt/airflow/plugins
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
     ports:
       - "8080:8080"
     networks:
@@ -61,6 +61,7 @@ services:
       - "443:443"
     depends_on:
       - django
+      - airflow
     networks:
       - audita-net
 
