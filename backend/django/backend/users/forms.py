@@ -14,3 +14,7 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = Usuario
         fields = '__all__'
+
+
+class CSVUploadForm(forms.Form):
+    csv_file = forms.FileField(label='Selecionar arquivo CSV')
