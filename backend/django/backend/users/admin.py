@@ -30,12 +30,14 @@ class UsuarioAdmin(UserAdmin):
     )
 
 
-    def get_form(self, request, obj=None, change=False, **kwargs):
-        if not change:
+
+    def get_form(self, request, obj=None, **kwargs):
+        if obj is None:  # criação
             kwargs['form'] = CustomUserCreationForm
-        else:
+        else:  # edição
             kwargs['form'] = self.form
-        return super().get_form(request, obj, change, **kwargs)
+        return super().get_form(request, obj, **kwargs)
+
 
     def save_model(self, request, obj, form, change):
         # Define a senha digitada no campo password
