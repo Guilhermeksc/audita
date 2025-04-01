@@ -2,7 +2,7 @@ git fetch origin
 git reset --hard origin/main
 git clean -fd
 
-xx
+teste
 docker-compose down
 docker-compose up -d --build
 
