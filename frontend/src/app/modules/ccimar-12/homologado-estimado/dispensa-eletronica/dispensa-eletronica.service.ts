@@ -31,13 +31,13 @@ export class DispensaEletronicaService {
 
   constructor(private http: HttpClient) {}
 
-  // listarObjetos(): Observable<DispensaEletronica[]> {
-  //  return this.http.get<DispensaEletronica[]>(this.apiUrl);
-  //}
-
   listarObjetos(): Observable<DispensaEletronica[]> {
-    return this.http.get<DispensaEletronica[]>('/assets/mocks/dispensa-eletronica.mock.json');
+   return this.http.get<DispensaEletronica[]>(this.apiUrl);
   }
+
+  // listarObjetos(): Observable<DispensaEletronica[]> {
+  //   return this.http.get<DispensaEletronica[]>('/assets/mocks/dispensa-eletronica.mock.json');
+  // }
 
   excluirObjeto(nr: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${nr}`);
