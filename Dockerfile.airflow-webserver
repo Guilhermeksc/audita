@@ -1,4 +1,4 @@
 FROM audita-airflow-base:latest
-COPY backend/airflow/dags /opt/airflow/dags
+COPY backend/airflow /opt/airflow/dags
 CMD ["airflow", "webserver"]
 
