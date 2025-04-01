@@ -1,7 +1,7 @@
 import json
 from django.core.management.base import BaseCommand
 from django.utils import timezone
-from backend.dispensa.models import DispensaEletronica, AmparoLegal
+from backend.dispensa.models import DispensaEletronica
 from datetime import datetime
 
 class Command(BaseCommand):
@@ -22,15 +22,6 @@ class Command(BaseCommand):
             self.stdout.write(f'Found {len(filtered_data)} records with modalidadeId = 8')
             
             for item in filtered_data:
-                # Create or get AmparoLegal
-                amparo_legal, _ = AmparoLegal.objects.get_or_create(
-                    codigo=item['amparoLegal']['codigo'],
-                    defaults={
-                        'descricao': item['amparoLegal']['descricao'],
-                        'nome': item['amparoLegal']['nome']
-                    }
-                )
-                
                 # Convert date strings to datetime objects
                 data_publicacao = datetime.fromisoformat(item['dataPublicacaoPncp'].replace('Z', '+00:00'))
                 data_abertura = datetime.fromisoformat(item['dataAberturaProposta'].replace('Z', '+00:00'))
@@ -65,7 +56,10 @@ class Command(BaseCommand):
                         'modo_disputa_nome': item['modoDisputaNome'],
                         'tipo_instrumento_convocatorio_codigo': item['tipoInstrumentoConvocatorioCodigo'],
                         'tipo_instrumento_convocatorio_nome': item['tipoInstrumentoConvocatorioNome'],
-                        'amparo_legal': amparo_legal,
+                        # Campos do amparoLegal
+                        'amparo_legal_codigo': item['amparoLegal']['codigo'],
+                        'amparo_legal_descricao': item['amparoLegal']['descricao'],
+                        'amparo_legal_nome': item['amparoLegal']['nome'],
                         'objeto_compra': item['objetoCompra'],
                         'informacao_complementar': item['informacaoComplementar'],
                         'srp': item['srp'],

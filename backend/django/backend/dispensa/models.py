@@ -32,7 +32,10 @@ class DispensaEletronica(models.Model):
     modo_disputa_nome = models.CharField(max_length=100)
     tipo_instrumento_convocatorio_codigo = models.IntegerField()
     tipo_instrumento_convocatorio_nome = models.CharField(max_length=255)
-    amparo_legal = models.ForeignKey(AmparoLegal, on_delete=models.CASCADE)
+    # Campos do amparoLegal incorporados diretamente
+    amparo_legal_codigo = models.IntegerField()
+    amparo_legal_descricao = models.TextField()
+    amparo_legal_nome = models.CharField(max_length=255)
     objeto_compra = models.TextField()
     informacao_complementar = models.TextField(null=True, blank=True)
     srp = models.BooleanField(default=False)

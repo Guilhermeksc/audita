@@ -7,8 +7,15 @@ class AmparoLegalSerializer(serializers.ModelSerializer):
         fields = ['codigo', 'descricao', 'nome']
 
 class DispensaEletronicaSerializer(serializers.ModelSerializer):
-    amparo_legal = AmparoLegalSerializer(read_only=True)
+    amparoLegal = serializers.SerializerMethodField()
 
     class Meta:
         model = DispensaEletronica
-        fields = '__all__' 
+        fields = '__all__'
+    
+    def get_amparoLegal(self, obj):
+        return {
+            'codigo': obj.amparo_legal_codigo,
+            'descricao': obj.amparo_legal_descricao,
+            'nome': obj.amparo_legal_nome
+        } 
