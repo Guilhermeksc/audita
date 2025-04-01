@@ -1,17 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Usuario, Perfil
-
-class CustomUserCreationForm(UserCreationForm):
-    class Meta:
-        model = Usuario
-        fields = ('nip', 'nome_completo', 'posto')
-
-class CustomUserChangeForm(UserChangeForm):
-    class Meta:
-        model = Usuario
-        fields = '__all__'
+from .forms import CustomUserCreationForm, CustomUserChangeForm
         
 @admin.register(Perfil)
 class PerfilAdmin(admin.ModelAdmin):
@@ -36,10 +26,9 @@ class UsuarioAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('nip', 'password1', 'password2', 'nome_completo', 'posto'),
+            'fields': ('nip', 'nome_completo', 'posto', 'password1', 'password2'),
         }),
     )
-
     def add_view(self, request, form_url='', extra_context=None):
         import logging
         logger = logging.getLogger(__name__)
