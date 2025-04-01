@@ -41,6 +41,9 @@ class UsuarioAdmin(UserAdmin):
     )
 
     def add_view(self, request, form_url='', extra_context=None):
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error("🚨 Entrou no add_view() do UsuarioAdmin")
         if request.method == 'POST':
             form_class = self.get_form(request, obj=None, change=False)
             form = form_class(request.POST)
