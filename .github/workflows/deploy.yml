@@ -37,4 +37,5 @@ jobs:
             cd /root/audita
             docker-compose down
             docker-compose up --build -d
+            sleep 30 
             docker exec django python manage.py migrate
