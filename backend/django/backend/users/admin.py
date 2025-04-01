@@ -30,6 +30,13 @@ class UsuarioAdmin(UserAdmin):
     )
 
 
+    def get_form(self, request, obj=None, change=False, **kwargs):
+        if not change:
+            kwargs['form'] = CustomUserCreationForm
+        else:
+            kwargs['form'] = self.form
+        return super().get_form(request, obj, change, **kwargs)
+
     def save_model(self, request, obj, form, change):
         # Define a senha digitada no campo password
         raw_password = form.cleaned_data.get("password")
