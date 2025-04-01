@@ -1,3 +1,3 @@
 FROM audita-airflow-base:latest
-COPY backend/airflow /opt/airflow/airflow
+COPY backend/airflow /opt/airflow/dags
 CMD ["airflow", "scheduler"]
