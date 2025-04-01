@@ -25,6 +25,27 @@ class UsuarioAdmin(UserAdmin):
     )
     search_fields = ('nip', 'nome_completo', 'nome_de_guerra', 'email')
     filter_horizontal = ('perfis',)  # interface amigável para ManyToMany
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': (
+                'nip',
+                'password1',
+                'password2',
+                'nome_completo',
+                'posto',
+            ),
+        }),
+    )
+    def add_view(self, request, form_url='', extra_context=None):
+        if request.method == 'POST':
+            form = self.get_form(request)(request.POST)
+            if not form.is_valid():
+                print("\n== ERROS NO FORMULÁRIO ==")
+                for field, errors in form.errors.items():
+                    print(f"{field}: {errors}")
+                print("== FIM DOS ERROS ==\n")
+        return super().add_view(request, form_url, extra_context)
 
 
     def save_model(self, request, obj, form, change):
