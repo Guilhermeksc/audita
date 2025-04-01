@@ -1,31 +1,37 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Usuario, Perfil
-        
+from .forms import UsuarioAdminCreateForm, CustomUserChangeForm
+   
 @admin.register(Perfil)
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('id', 'nome')
     search_fields = ('nome',)
     
+
+
 @admin.register(Usuario)
 class UsuarioAdmin(UserAdmin):
     model = Usuario
-
-    ordering = ['nip']
-    list_display = (
-        'nip', 'nome_completo', 'nome_de_guerra', 'posto',
-        'especialidade', 'nome_funcao', 'divisao', 'email',
-        'get_perfis', 'is_staff',
-    )
-    search_fields = ('nip', 'nome_completo', 'nome_de_guerra', 'email')
-    filter_horizontal = ('perfis',)
+    add_form = UsuarioAdminCreateForm  # usar nosso form simples
+    form = CustomUserChangeForm  # mantém o form de edição completo
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('nip', 'nome_completo', 'posto'),
+            'fields': ('nip', 'nome_completo', 'posto', 'nome_funcao', 'divisao', 'email'),
         }),
     )
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            obj.set_password("audita10")  # define senha padrão
+        super().save_model(request, obj, form, change)
+
+        if not obj.perfil_ativo and obj.perfis.exists():
+            obj.perfil_ativo = obj.perfis.first()
+            obj.save()
+
     
     def add_view(self, request, form_url='', extra_context=None):
         import logging
@@ -44,15 +50,6 @@ class UsuarioAdmin(UserAdmin):
                 logger.error("== FIM DOS ERROS ==")
 
         return super().add_view(request, form_url, extra_context)
-
-    def save_model(self, request, obj, form, change):
-        if not change:  # está criando
-            obj.set_password("audita10")
-        super().save_model(request, obj, form, change)
-
-        if not obj.perfil_ativo and obj.perfis.exists():
-            obj.perfil_ativo = obj.perfis.first()
-            obj.save()
             
     def get_perfis(self, obj):
         return ", ".join(p.nome for p in obj.perfis.all())
