@@ -11,7 +11,7 @@ import { AcompanhamentoComponent } from './modules/ccimar-12/diario-oficial/acom
 import { PesquisarHistoricoComponent } from './modules/ccimar-12/diario-oficial/pesquisar-historico/pesquisar-historico.component';
 import { PesquisarDataComponent } from './modules/ccimar-12/diario-oficial/pesquisar-data/pesquisar-data.component';
 import { AuthGuard, AuthChildGuard } from './services/auth.guard';
-import { DispensaEletronicaComponent } from './modules/ccimar-12/homologado-estimado/dispensa-eletronica/dispensa-eletronica.component';
+import { PNCPModelComponent } from './modules/ccimar-12/homologado-estimado/dispensa-eletronica/dispensa-eletronica.component';
 import { PregaoEletronicoComponent } from './modules/ccimar-12/homologado-estimado/pregao-eletronico/pregao-eletronico.component';
 import { ConcorrenciaComponent } from './modules/ccimar-12/homologado-estimado/concorrencia/concorrencia.component';
 import { CredenciamentoComponent } from './modules/ccimar-12/homologado-estimado/credenciamento/credenciamento.component';
@@ -98,7 +98,7 @@ export const routes: Routes = [
             path: 'homologado-estimado',
             children: [
               { path: '', component: HomologadoEstimadoComponent },
-              { path: 'dispensa-eletronica', component: DispensaEletronicaComponent },
+              { path: 'dispensa-eletronica', component: PNCPModelComponent },
               { path: 'pregao-eletronico', component: PregaoEletronicoComponent }, 
               { path: 'concorrencia', component: ConcorrenciaComponent },
               { path: 'credenciamento', component: CredenciamentoComponent }

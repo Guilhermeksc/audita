@@ -1,11 +1,11 @@
 import json
 from django.core.management.base import BaseCommand
 from django.utils import timezone
-from backend.dispensa.models import DispensaEletronica
+from backend.pncp.models import PNCPModel
 from datetime import datetime
 
 class Command(BaseCommand):
-    help = 'Loads initial dispensa eletronica data from JSON file'
+    help = 'Loads initial pncp data from JSON file'
 
     def add_arguments(self, parser):
         parser.add_argument('json_file', type=str, help='Path to the JSON file')
@@ -30,8 +30,8 @@ class Command(BaseCommand):
                 data_atualizacao = datetime.fromisoformat(item['dataAtualizacao'].replace('Z', '+00:00'))
                 data_atualizacao_global = datetime.fromisoformat(item['dataAtualizacaoGlobal'].replace('Z', '+00:00'))
                 
-                # Create or update DispensaEletronica
-                dispensa, created = DispensaEletronica.objects.update_or_create(
+                # Create or update PNCPModel
+                pncp, created = PNCPModel.objects.update_or_create(
                     numero_controle_pncp=item['numeroControlePNCP'],
                     defaults={
                         'valor_total_estimado': item['valorTotalEstimado'],
@@ -76,6 +76,6 @@ class Command(BaseCommand):
                 )
                 
                 if created:
-                    self.stdout.write(self.style.SUCCESS(f'Created dispensa: {dispensa}'))
+                    self.stdout.write(self.style.SUCCESS(f'Created pncp: {pncp}'))
                 else:
-                    self.stdout.write(self.style.SUCCESS(f'Updated dispensa: {dispensa}')) 
+                    self.stdout.write(self.style.SUCCESS(f'Updated pncp: {pncp}')) 

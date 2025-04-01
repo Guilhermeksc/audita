@@ -8,8 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { DispensaEletronicaService, DispensaEletronica } from './dispensa-eletronica.service';
-import { DetalheDispensaEletronicaComponent } from './detalhe-dispensa-eletronica/detalhe-dispensa-eletronica.component';
+import { PNCPModelService, PNCPModel } from './dispensa-eletronica.service';
+import { DetalhePNCPModelComponent } from './detalhe-dispensa-eletronica/detalhe-dispensa-eletronica.component';
 
 @Component({
   selector: 'app-dispensa-eletronica',
@@ -27,17 +27,17 @@ import { DetalheDispensaEletronicaComponent } from './detalhe-dispensa-eletronic
   templateUrl: './dispensa-eletronica.component.html',
   styleUrl: './dispensa-eletronica.component.scss'
 })
-export class DispensaEletronicaComponent implements OnInit {
+export class PNCPModelComponent implements OnInit {
   displayedColumns: string[] = [
      'acao', 'alerta', 'sequencialCompra', 'anoCompra', 'numeroCompra', 'processo',
     'codigoUnidade', 'nomeUnidade', 'ufSigla', 'valorTotalHomologado', 'modoDisputaNome', 'amparoLegal.nome',
   ];
 
-  dataSource: DispensaEletronica[] = [];
+  dataSource: PNCPModel[] = [];
 
   constructor(
     private dialog: MatDialog,
-    private service: DispensaEletronicaService,
+    private service: PNCPModelService,
     private http: HttpClient // <-- adicione isso
 ) {}
   ngOnInit(): void {
@@ -47,8 +47,8 @@ export class DispensaEletronicaComponent implements OnInit {
     });
   }
 
-  openDetailDialog(row: DispensaEletronica): void {
-    const dialogRef = this.dialog.open(DetalheDispensaEletronicaComponent, {
+  openDetailDialog(row: PNCPModel): void {
+    const dialogRef = this.dialog.open(DetalhePNCPModelComponent, {
       data: { ...row }, // cópia para edição isolada
       width: '800px',
       height: '600px'
@@ -77,7 +77,7 @@ export class DispensaEletronicaComponent implements OnInit {
     });
   }
 
-  baixarDocumento(element: DispensaEletronica): void {
+  baixarDocumento(element: PNCPModel): void {
     const ano = element.anoCompra;
     const sequencial = element.sequencialCompra;
     const baseUrl = 'https://pncp.gov.br/api/pncp/v1/orgaos/00394502000144/compras';

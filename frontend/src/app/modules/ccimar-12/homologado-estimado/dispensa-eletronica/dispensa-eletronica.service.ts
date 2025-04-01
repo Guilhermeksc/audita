@@ -8,7 +8,7 @@ export interface AmparoLegal {
   nome: string;
 }
 
-export interface DispensaEletronica {
+export interface PNCPModel {
   valorTotalHomologado: string;
   sequencialCompra: number;
   anoCompra: number;
@@ -25,18 +25,18 @@ export interface DispensaEletronica {
   providedIn: 'root'
 })
 
-export class DispensaEletronicaService {
+export class PNCPModelService {
 
   private readonly apiUrl = '/api/dispensa-eletronica';
 
   constructor(private http: HttpClient) {}
 
-  listarObjetos(): Observable<DispensaEletronica[]> {
-   return this.http.get<DispensaEletronica[]>(this.apiUrl);
+  listarObjetos(): Observable<PNCPModel[]> {
+   return this.http.get<PNCPModel[]>(this.apiUrl);
   }
 
-  // listarObjetos(): Observable<DispensaEletronica[]> {
-  //   return this.http.get<DispensaEletronica[]>('/assets/mocks/dispensa-eletronica.mock.json');
+  // listarObjetos(): Observable<PNCPModel[]> {
+  //   return this.http.get<PNCPModel[]>('/assets/mocks/dispensa-eletronica.mock.json');
   // }
 
   excluirObjeto(nr: number): Observable<void> {

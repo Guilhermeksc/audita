@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'backend.users',
     'backend.diario',
-    'backend.dispensa',
+    'backend.pncp',
 ]
 
 

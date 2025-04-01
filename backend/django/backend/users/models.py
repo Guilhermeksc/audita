@@ -25,7 +25,6 @@ class Perfil(models.Model):
     def __str__(self):
         return self.nome
 
-    
 class Usuario(AbstractBaseUser, PermissionsMixin):
     posto = models.CharField(max_length=30)
     especialidade = models.CharField(max_length=50, blank=True, null=True)

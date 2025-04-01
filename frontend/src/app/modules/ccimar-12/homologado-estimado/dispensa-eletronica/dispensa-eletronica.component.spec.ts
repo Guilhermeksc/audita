@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DispensaEletronicaComponent } from './dispensa-eletronica.component';
+import { PNCPModelComponent } from './dispensa-eletronica.component';
 
-describe('DispensaEletronicaComponent', () => {
-  let component: DispensaEletronicaComponent;
-  let fixture: ComponentFixture<DispensaEletronicaComponent>;
+describe('PNCPModelComponent', () => {
+  let component: PNCPModelComponent;
+  let fixture: ComponentFixture<PNCPModelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DispensaEletronicaComponent]
+      imports: [PNCPModelComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DispensaEletronicaComponent);
+    fixture = TestBed.createComponent(PNCPModelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

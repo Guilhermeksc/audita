@@ -1,16 +1,18 @@
+# backend/django/backend/pncp/serializers.py
+
 from rest_framework import serializers
-from .models import DispensaEletronica, AmparoLegal
+from .models import PNCPModel, AmparoLegal
 
 class AmparoLegalSerializer(serializers.ModelSerializer):
     class Meta:
         model = AmparoLegal
         fields = ['codigo', 'descricao', 'nome']
 
-class DispensaEletronicaSerializer(serializers.ModelSerializer):
+class PNCPModelSerializer(serializers.ModelSerializer):
     amparoLegal = serializers.SerializerMethodField()
 
     class Meta:
-        model = DispensaEletronica
+        model = PNCPModel
         fields = '__all__'
     
     def get_amparoLegal(self, obj):

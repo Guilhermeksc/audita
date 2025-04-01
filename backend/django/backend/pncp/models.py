@@ -1,3 +1,5 @@
+# backend/django/backend/pncp/models.py
+
 from django.db import models
 
 class AmparoLegal(models.Model):
@@ -8,7 +10,7 @@ class AmparoLegal(models.Model):
     class Meta:
         db_table = 'amparo_legal'
 
-class DispensaEletronica(models.Model):
+class PNCPModel(models.Model):
     valor_total_estimado = models.DecimalField(max_digits=15, decimal_places=2)
     valor_total_homologado = models.DecimalField(max_digits=15, decimal_places=2)
     orcamento_sigiloso_codigo = models.IntegerField()
@@ -50,7 +52,7 @@ class DispensaEletronica(models.Model):
     data_atualizacao_global = models.DateTimeField()
 
     class Meta:
-        db_table = 'dispensa_eletronica'
+        db_table = 'pncp'
         ordering = ['-data_publicacao_pncp']
 
     def __str__(self):

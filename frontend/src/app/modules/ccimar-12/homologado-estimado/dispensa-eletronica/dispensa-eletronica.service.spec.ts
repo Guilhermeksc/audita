@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DispensaEletronicaService } from './dispensa-eletronica.service';
+import { PNCPModelService } from './dispensa-eletronica.service';
 
-describe('DispensaEletronicaService', () => {
-  let service: DispensaEletronicaService;
+describe('PNCPModelService', () => {
+  let service: PNCPModelService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DispensaEletronicaService);
+    service = TestBed.inject(PNCPModelService);
   });
 
   it('should be created', () => {
