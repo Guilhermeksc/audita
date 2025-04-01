@@ -44,14 +44,18 @@ class UsuarioAdmin(UserAdmin):
         import logging
         logger = logging.getLogger(__name__)
         logger.error("🚨 Entrou no add_view() do UsuarioAdmin")
+
         if request.method == 'POST':
             form_class = self.get_form(request, obj=None, change=False)
             form = form_class(request.POST)
             if not form.is_valid():
-                print("\n== ERROS NO FORMULÁRIO ==")
+                logger.error("== ERROS NO FORMULÁRIO ==")
                 for field, errors in form.errors.items():
-                    print(f"{field}: {errors}")
-                print("== FIM DOS ERROS ==\n")
+                    logger.error(f"{field}: {errors}")
+                if form.non_field_errors():
+                    logger.error(f"Erros não relacionados a campos: {form.non_field_errors()}")
+                logger.error("== FIM DOS ERROS ==")
+
         return super().add_view(request, form_url, extra_context)
 
     def save_model(self, request, obj, form, change):
