@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Usuario, Perfil
-from .forms import CustomUserChangeForm  # apenas o de edição é necessário
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 @admin.register(Usuario)
 class UsuarioAdmin(UserAdmin):
     model = Usuario
-    form = CustomUserChangeForm  # edição
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
 
     ordering = ['nip']
     list_display = (
@@ -17,17 +18,17 @@ class UsuarioAdmin(UserAdmin):
     search_fields = ('nip', 'nome_completo', 'nome_de_guerra', 'email')
     filter_horizontal = ('perfis',)
 
-
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
             'fields': (
-                'nip', 'password',
+                'nip', 'password1', 'password2',
                 'nome_completo', 'nome_de_guerra', 'posto',
                 'especialidade', 'nome_funcao', 'divisao', 'email',
             ),
         }),
     )
+
 
     def save_model(self, request, obj, form, change):
         # Define a senha digitada no campo password
