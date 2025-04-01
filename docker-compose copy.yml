@@ -7,6 +7,16 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth"
+    AIRFLOW__WEBSERVER__AUTHENTICATE: "true"
+    AIRFLOW__WEBSERVER__AUTH_BACKEND: "airflow.api.auth.backend.basic_auth"
+    AIRFLOW__WEBSERVER__SECRET_KEY: "${DJANGO_SECRET_KEY}"
+    AIRFLOW__WEBSERVER__REMOTE_USER_ENABLED: "true"
+    AIRFLOW__WEBSERVER__REMOTE_USER_HEADER: "X-Remote-User"
+    AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_NAME: "X-Remote-User"
+    AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_EMAIL: "X-Remote-User-Email"
+    AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_FIRSTNAME: "X-Remote-User-Firstname"
+    AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_LASTNAME: "X-Remote-User-Lastname"
+    AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_ROLES: "X-Remote-User-Roles"
   volumes:
     - ./backend/airflow/dags:/opt/airflow/dags
     - ./backend/airflow/logs:/opt/airflow/logs
@@ -46,6 +56,13 @@ services:
       AIRFLOW__WEBSERVER__WEB_SERVER_URL_PREFIX: /airflow
       AIRFLOW__WEBSERVER__BASE_URL: https://auditapro.com.br/airflow
       AIRFLOW__WEBSERVER__ENABLE_PROXY_FIX: "True"
+      AIRFLOW__WEBSERVER__REMOTE_USER_ENABLED: "true"
+      AIRFLOW__WEBSERVER__REMOTE_USER_HEADER: "X-Remote-User"
+      AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_NAME: "X-Remote-User"
+      AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_EMAIL: "X-Remote-User-Email"
+      AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_FIRSTNAME: "X-Remote-User-Firstname"
+      AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_LASTNAME: "X-Remote-User-Lastname"
+      AIRFLOW__WEBSERVER__REMOTE_USER_HEADER_ROLES: "X-Remote-User-Roles"
     command: >
       webserver 
       --access-logfile - 
