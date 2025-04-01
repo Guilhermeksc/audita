@@ -1,6 +1,6 @@
 x-airflow-common: &airflow-common
   image: apache/airflow:2.10.5-python3.12
-  environment: &airflow-env
+  environment:
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:postgres@postgres:5432/audita_db
     AIRFLOW__CORE__FERNET_KEY: ""
@@ -15,7 +15,7 @@ x-airflow-common: &airflow-common
     - postgres
   networks:
     - audita-net
-    
+
 services:
   postgres:
     image: postgres:16
@@ -33,31 +33,16 @@ services:
 
   airflow-init:
     <<: *airflow-common
-    build:
-      context: .
-      dockerfile: Dockerfile.airflow-init
     container_name: airflow-init
     command: >
-      bash -c "
-        airflow db migrate &&
-        airflow users list | grep admin ||
-        airflow users create \
-          --username admin \
-          --firstname Admin \
-          --lastname User \
-          --role Admin \
-          --email guilhermekscampos@gmail.com \
-          --password admin"
+      bash -c "airflow db upgrade &&
+               airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin"
     restart: on-failure
-    
+
   airflow-webserver:
     <<: *airflow-common
-    build:
-      context: .
-      dockerfile: Dockerfile.airflow-webserver
     container_name: airflow-webserver
     environment:
-      <<: *airflow-env
       AIRFLOW__WEBSERVER__WEB_SERVER_URL_PREFIX: /airflow
       AIRFLOW__WEBSERVER__BASE_URL: https://auditapro.com.br/airflow
       AIRFLOW__WEBSERVER__ENABLE_PROXY_FIX: "True"
@@ -73,7 +58,7 @@ services:
     ports:
       - "8080:8080"
     healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:8080/airflow/health"]
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 10s
       retries: 5
       start_period: 10s
@@ -83,9 +68,6 @@ services:
 
   airflow-scheduler:
     <<: *airflow-common
-    build:
-      context: .
-      dockerfile: Dockerfile.airflow-scheduler
     container_name: airflow-scheduler
     command: scheduler
     depends_on:
@@ -93,7 +75,7 @@ services:
         condition: service_completed_successfully
     networks:
       - audita-net
-      
+
   django:
     build:
       context: .

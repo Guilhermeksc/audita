@@ -1,3 +1,0 @@
-FROM audita-airflow-base:latest
-COPY backend/airflow /opt/airflow/dags
-CMD ["airflow", "db", "init"]
