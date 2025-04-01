@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import Usuario, Perfil
-from .forms import CustomUserChangeForm  # apenas o de edição é necessário
 
 @admin.register(Usuario)
 class UsuarioAdmin(UserAdmin):
