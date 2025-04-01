@@ -6,8 +6,7 @@ from .forms import CustomUserChangeForm  # apenas o de edição é necessário
 @admin.register(Usuario)
 class UsuarioAdmin(UserAdmin):
     model = Usuario
-    form = CustomUserChangeForm  # usado para edição
-    add_form = None  # desativa o formulário com password1/password2
+    form = CustomUserChangeForm  # edição
 
     ordering = ['nip']
     list_display = (
@@ -17,6 +16,7 @@ class UsuarioAdmin(UserAdmin):
     )
     search_fields = ('nip', 'nome_completo', 'nome_de_guerra', 'email')
     filter_horizontal = ('perfis',)
+
 
     add_fieldsets = (
         (None, {
