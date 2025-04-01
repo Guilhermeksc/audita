@@ -1,7 +1,0 @@
-apache-airflow==2.9.0
-selenium==4.30.0
-beautifulsoup4==4.13.3
-bs4==0.0.2
-soupsieve==2.6
-requests==2.32.3
-urllib3==2.3.0
