@@ -1,3 +1,5 @@
+# backend/django/backend/pncp/views.py
+
 from rest_framework import viewsets
 from .models import PNCPModel
 from .serializers import PNCPModelSerializer
