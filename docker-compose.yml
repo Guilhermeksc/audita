@@ -33,6 +33,9 @@ services:
 
   airflow-init:
     <<: *airflow-common
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow-init
     container_name: airflow-init
     command: >
       bash -c "
@@ -49,6 +52,9 @@ services:
     
   airflow-webserver:
     <<: *airflow-common
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow-webserver
     container_name: airflow-webserver
     environment:
       <<: *airflow-env
@@ -75,9 +81,11 @@ services:
     networks:
       - audita-net
 
-
   airflow-scheduler:
     <<: *airflow-common
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow-scheduler
     container_name: airflow-scheduler
     command: scheduler
     depends_on:
