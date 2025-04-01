@@ -6,8 +6,8 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 @admin.register(Usuario)
 class UsuarioAdmin(UserAdmin):
     model = Usuario
-    add_form = CustomUserCreationForm
     form = CustomUserChangeForm
+    add_form = CustomUserCreationForm
 
     ordering = ['nip']
     list_display = (
@@ -18,43 +18,24 @@ class UsuarioAdmin(UserAdmin):
     search_fields = ('nip', 'nome_completo', 'nome_de_guerra', 'email')
     filter_horizontal = ('perfis',)
 
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': (
-                'nip', 'password1', 'password2',
-                'nome_completo', 'nome_de_guerra', 'posto',
-                'especialidade', 'nome_funcao', 'divisao', 'email',
-            ),
-        }),
-    )
-
-
-
     def get_form(self, request, obj=None, **kwargs):
-        if obj is None:  # criação
-            kwargs['form'] = CustomUserCreationForm
-        else:  # edição
-            kwargs['form'] = self.form
+        if obj is None:
+            return CustomUserCreationForm
         return super().get_form(request, obj, **kwargs)
 
-
-    def save_model(self, request, obj, form, change):
-        # Define a senha digitada no campo password
-        raw_password = form.cleaned_data.get("password")
-        if raw_password:
-            obj.set_password(raw_password)
-        super().save_model(request, obj, form, change)
-
-        if not obj.perfil_ativo and obj.perfis.exists():
-            obj.perfil_ativo = obj.perfis.first()
-            obj.save()
-
-    def get_perfis(self, obj):
-        return ", ".join(p.nome for p in obj.perfis.all())
-    get_perfis.short_description = 'Perfis'
-
     def get_fieldsets(self, request, obj=None):
+        if not obj:
+            return (
+                (None, {
+                    'classes': ('wide',),
+                    'fields': (
+                        'nip', 'password1', 'password2',
+                        'nome_completo', 'nome_de_guerra', 'posto',
+                        'especialidade', 'nome_funcao', 'divisao', 'email',
+                    ),
+                }),
+            )
+        # fieldsets para edição
         base_fieldsets = (
             (None, {'fields': ('nip', 'password')}),
             ('Informações pessoais', {
@@ -75,6 +56,10 @@ class UsuarioAdmin(UserAdmin):
         if request.user.is_superuser:
             return base_fieldsets + (('Perfis do Sistema', {'fields': ('perfis',)}),)
         return base_fieldsets
+
+    def get_perfis(self, obj):
+        return ", ".join(p.nome for p in obj.perfis.all())
+    get_perfis.short_description = 'Perfis'
 
     def get_readonly_fields(self, request, obj=None):
         if obj is None:
