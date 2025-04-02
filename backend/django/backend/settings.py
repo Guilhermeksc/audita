@@ -4,9 +4,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-print(f"USER: {os.getenv('POSTGRES_USER')}")
-print(f"PASSWORD: {os.getenv('POSTGRES_PASSWORD')}")
-print(f"DB: {os.getenv('POSTGRES_DB')}")
+print(f"DB NAME: {os.getenv('POSTGRES_DB')}")
+print(f"DB USER: {os.getenv('POSTGRES_USER')}")
+print(f"DB PASSWORD: {os.getenv('POSTGRES_PASSWORD')}")
+print(f"DB HOST: {os.getenv('POSTGRES_HOST')}")
+print(f"DB PORT: {os.getenv('POSTGRES_PORT')}")
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

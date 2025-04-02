@@ -1,33 +1,4 @@
 services:
-  airflow-db:
-    image: postgres:16
-    container_name: airflow-db
-    restart: unless-stopped
-    environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
-    volumes:
-      - airflow_pgdata:/var/lib/postgresql/data
-    ports:
-      - "5433:5432"
-    networks:
-      - audita-net
-
-  airflow-webserver:
-    build:
-      context: .
-      dockerfile: Dockerfile.airflow
-    image: airflow-custom:2.10.4
-    container_name: airflow-webserver
-  
-  airflow-scheduler:
-    build:
-      context: .
-      dockerfile: Dockerfile.airflow
-    image: airflow-custom:2.10.4
-    container_name: airflow-scheduler
-
   postgres:
     image: postgres:16
     container_name: postgres
@@ -73,13 +44,11 @@ services:
       - "443:443"
     depends_on:
       - django
-      - airflow-webserver
     networks:
       - audita-net
 
 volumes:
   postgres-db-volume:
-  airflow_pgdata:
   static_volume:
 
 networks:
