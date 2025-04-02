@@ -43,7 +43,17 @@ export class SidebarComponent {
       },
       'RAINT'
     ], expanded: true },
-    { title: 'PLANEJAMENTO', icon: 'assets/icons/svg/menu_icon.svg', children: ['Planejamento'], expanded: true },
+    { title: 'PLANEJAMENTO', icon: 'assets/icons/svg/menu_icon.svg', children: [
+      'Geração de OS',
+      'Minuta de MSG',
+      'Ofício de Equipe',
+      'Matriz de Riscos',
+      'Plano de Auditoria',
+      'S.A',
+      'Apresentação Inicial',
+    ],
+    expanded: true
+    }, 
     { title: 'EXECUÇÃO', icon: 'assets/icons/svg/menu_icon.svg', children: [
       'Testes com base na Matriz de Planejamento',
       'PT',
@@ -61,6 +71,14 @@ export class SidebarComponent {
     ],
     expanded: true
     },
+    { title: 'Atos de Pessoal', icon: 'assets/icons/svg/menu_icon.svg', children: [
+      'Folha de Pagamento',
+      'Integração/Importação da base de dados do e-pessoal e conecta-TCU',
+      'Indícios do e-pessoal',
+      'Envio para TCU e recebimento dos Acórdãos',
+    ],
+    expanded: true
+    },      
     { title: 'PGMQ', icon: 'assets/icons/svg/menu_icon.svg', children: [
       'Acompanhamento das etapas do processo de Auditoria',
       'Alerta de supervisionamento à conclusão de cada etapa',
@@ -75,7 +93,14 @@ export class SidebarComponent {
       'Extração de relatórios para Solicitação de Auditoria e para COFAMAR',
     ],
     expanded: true
-    },             
+    },     
+    { title: 'Assessoria de Controle Interno', icon: 'assets/icons/svg/menu_icon.svg', children: [
+      'Acompanhamento das demandas de ACI',
+      'Monitoramento das Assessorias sobre as OM subordinadas',
+      'Tramitar informações entre as ACI e as OM subordinadas',
+    ],
+    expanded: true
+    },               
     { title: 'CCIMAR-12', icon: 'assets/icons/svg/menu_icon.svg', children: [
         {
           title: 'Diário Oficial da União (DOU)',
