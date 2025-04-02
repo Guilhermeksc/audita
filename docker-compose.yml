@@ -14,22 +14,23 @@ services:
     networks:
       - audita-net
 
-  airflow-init:
-    image: apache/airflow:2.10.4
-    container_name: airflow-init
-    depends_on:
-      - airflow-db
-    env_file:
-      - .env
-    volumes:
-      - ./dags:/opt/airflow/dags
-      - ./logs:/opt/airflow/logs
-      - ./plugins:/opt/airflow/plugins
-    entrypoint: >
-      bash -c "airflow db init &&
-               airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin"
-    networks:
-      - audita-net
+  # airflow-init:
+  #   image: apache/airflow:2.10.4
+  #   container_name: airflow-init
+  #   depends_on:
+  #     - airflow-db
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - ./dags:/opt/airflow/dags
+  #     - ./logs:/opt/airflow/logs
+  #     - ./plugins:/opt/airflow/plugins
+  #   entrypoint: >
+  #     bash -c "airflow db init &&
+  #              airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin"
+  #   networks:
+  #     - audita-net
+
 
   airflow-webserver:
     image: apache/airflow:2.10.4
@@ -43,8 +44,8 @@ services:
       - ./backend/airflow/dags:/opt/airflow/dags
       - ./backend/airflow/logs:/opt/airflow/logs
       - ./backend/airflow/plugins:/opt/airflow/plugins
-    # ports:
-    #   - "8080:8080"
+    ports:
+      - "8080:8080"
     networks:
       - audita-net
     command: airflow webserver
@@ -64,7 +65,6 @@ services:
     networks:
       - audita-net
     command: airflow scheduler
-
 
   postgres:
     image: postgres:16
