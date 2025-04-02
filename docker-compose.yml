@@ -1,25 +1,75 @@
 services:
-  airflow:
-    image: apache/airflow:2.10.5
-    container_name: airflow
+  airflow-db:
+    image: postgres:16
+    container_name: airflow-db
+    restart: unless-stopped
     environment:
-      AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres:5432/$POSTGRES_DB
-      AIRFLOW__WEBSERVER__BASE_URL: https://auditapro.com.br/airflow
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
     volumes:
-      - ./airflow/dags:/opt/airflow/dags
-      - ./airflow/logs:/opt/airflow/logs
-      - ./airflow/plugins:/opt/airflow/plugins
+      - airflow_pgdata:/var/lib/postgresql/data
     ports:
-      - "8080:8080"
+      - "5433:5432"
     networks:
       - audita-net
+
+  airflow-init:
+    image: apache/airflow:2.10.4
+    container_name: airflow-init
     depends_on:
-      - postgres
+      - airflow-db
+    env_file:
+      - .env
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+    entrypoint: >
+      bash -c "airflow db init &&
+               airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin"
+    networks:
+      - audita-net
+
+  airflow-webserver:
+    image: apache/airflow:2.10.4
+    container_name: airflow-webserver
+    restart: unless-stopped
+    depends_on:
+      - airflow-db
+    env_file:
+      - .env
+    volumes:
+      - ./backend/airflow/dags:/opt/airflow/dags
+      - ./backend/airflow/logs:/opt/airflow/logs
+      - ./backend/airflow/plugins:/opt/airflow/plugins
+    # ports:
+    #   - "8080:8080"
+    networks:
+      - audita-net
+    command: airflow webserver
+
+  airflow-scheduler:
+    image: apache/airflow:2.10.4
+    container_name: airflow-scheduler
+    restart: unless-stopped
+    depends_on:
+      - airflow-db
+    env_file:
+      - .env
+    volumes:
+      - ./backend/airflow/dags:/opt/airflow/dags
+      - ./backend/airflow/logs:/opt/airflow/logs
+      - ./backend/airflow/plugins:/opt/airflow/plugins
+    networks:
+      - audita-net
+    command: airflow scheduler
+
 
   postgres:
     image: postgres:16
     container_name: postgres
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -61,12 +111,13 @@ services:
       - "443:443"
     depends_on:
       - django
-      - airflow
+      - airflow-webserver
     networks:
       - audita-net
 
 volumes:
   postgres-db-volume:
+  airflow_pgdata:
   static_volume:
 
 networks:

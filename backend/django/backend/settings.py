@@ -4,6 +4,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+print(f"USER: {os.getenv('POSTGRES_USER')}")
+print(f"PASSWORD: {os.getenv('POSTGRES_PASSWORD')}")
+print(f"DB: {os.getenv('POSTGRES_DB')}")
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_ROOT = Path(os.getenv("STATIC_ROOT", BASE_DIR / "staticfiles"))
@@ -88,10 +92,10 @@ WSGI_APPLICATION = "backend.wsgi:application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'audita_db'),
+        'NAME': os.getenv('POSTGRES_DB', 'postgres'),
         'USER': os.getenv('POSTGRES_USER', 'postgres'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres'),
-        'HOST': os.getenv('POSTGRES_HOST', 'postgres'),
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
         'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }
