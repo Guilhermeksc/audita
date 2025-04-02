@@ -48,7 +48,7 @@ services:
       - "8080:8080"
     networks:
       - audita-net
-    command: airflow webserver
+    command: webserver
 
   airflow-scheduler:
     image: apache/airflow:2.10.4
@@ -64,7 +64,7 @@ services:
       - ./backend/airflow/plugins:/opt/airflow/plugins
     networks:
       - audita-net
-    command: airflow scheduler
+    command: scheduler
 
   postgres:
     image: postgres:16
