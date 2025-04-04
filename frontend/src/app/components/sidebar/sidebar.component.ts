@@ -33,6 +33,7 @@ export class SidebarComponent {
       {
         title: 'Subsídios',
         children: [
+          'Identificação de Riscos',
           'CCIMAR-12 - Licitação',
           'CCIMAR-13 - Execução Financeira',
           'CCIMAR-14 - Pagamento',
@@ -147,6 +148,8 @@ export class SidebarComponent {
     ];
 
   private routeMap: { [key: string]: string } = {
+    'Subsídios': 'subsidios',
+    'Identificação de Riscos': 'riscos',
     'PAINT': 'paint',
     'RAINT': 'raint',
     'Análise Processual de Alta Materialidade': 'alta-materialidade',
@@ -186,12 +189,16 @@ export class SidebarComponent {
       route = `home/${this.slugify(section)}/diario-oficial/${route}`;
     } else if (this.isChildOfHomologadoEstimado(optionText)) {
       route = `home/${this.slugify(section)}/homologado-estimado/${route}`;
+    } else if (this.isChildOfSubsidios(optionText)) {
+      route = `home/${this.slugify(section)}/subsidios/${route}`;
     } else if (this.isChildOfPaint(optionText)) {
       route = `home/${this.slugify(section)}/paint/${route}`;
     } else {
       route = `home/${this.slugify(section)}/${route}`;
     }
 
+
+    
     console.log('Navigating to:', route);
     this.router.navigate([route]);
   }
@@ -204,6 +211,13 @@ export class SidebarComponent {
   private isChildOfHomologadoEstimado(optionText: string): boolean {
     const homologadoEstimadoChildren = ['Dispensa Eletrônica', 'Pregão Eletrônico', 'Credenciamento', 'Concorrência'];
     return homologadoEstimadoChildren.includes(optionText);
+  }
+
+  private isChildOfSubsidios(optionText: string): boolean {
+    const subsidiosChildren = [
+      'Identificação de Riscos',
+    ]
+    return subsidiosChildren.includes(optionText)
   }
 
   private isChildOfPaint(optionText: string): boolean {

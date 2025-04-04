@@ -28,6 +28,10 @@ import { RelatorioFinalComponent } from './modules/execucao/relatorios/relatorio
 import { RelatoriosComponent } from './modules/execucao/relatorios/relatorios.component';
 import { RelatorioPreliminarComponent } from './modules/execucao/relatorios/relatorio-preliminar/relatorio-preliminar.component';
 
+import { SubsidiosComponent } from './modules/paint-raint/subsidios/subsidios.component';
+import { RiscosComponent } from './modules/paint-raint/subsidios/riscos/riscos.component';
+
+
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -43,6 +47,13 @@ export const routes: Routes = [
       {
         path: 'paint-raint',
         children: [
+          { 
+            path: 'subsidios',
+            children: [
+              { path: '', component: SubsidiosComponent },
+              { path: 'riscos', component: RiscosComponent }
+            ]
+          },          
           { 
             path: 'paint',
             children: [

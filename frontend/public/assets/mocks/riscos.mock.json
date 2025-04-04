@@ -1,0 +1,467 @@
+{
+    "licitacao": [
+        {
+            "codigo": "R0",
+            "risco": "Ausência/ Deficiência na elaboração da Ordem Interna do setor de Obtenção",
+            "descricao": "Falta de clareza sobre os procedimentos internos de obtenção; \nRisco de aquisições sem critérios padronizados; e\nPossibilidade de conflitos na definição de responsabilidades."
+        },
+        {
+            "codigo": "R1",
+            "risco": "Ausência/ Deficiência no   planejamento anual das contratações.",
+            "descricao": "Compras emergenciais com preços elevados; \nRisco de desabastecimento ou excesso de estoque; e \nDificuldade na alocação orçamentária adequada."
+        },
+        {
+            "codigo": "R2",
+            "risco": "Ausência/ fragilidades da formalização da demanda",
+            "descricao": "Processos licitatórios iniciados sem justificativa técnica adequada; \nAquisição de itens desnecessários ou incompatíveis com a necessidade real; e \nFalta de transparência na identificação das necessidades da OM."
+        },
+        {
+            "codigo": "R3",
+            "risco": "Ausência/ Deficiência na instituição da Equipe de Planejamento da Contratação",
+            "descricao": "Falta de responsabilidade definida para etapas críticas da contratação; \nProcessos malconduzidos, sem alinhamento estratégico; e\nRisco de erros técnicos e jurídicos na fase inicial da contratação."
+        },
+        {
+            "codigo": "R4",
+            "risco": "Ausência / Deficiência dos Estudos Técnicos Preliminares",
+            "descricao": "Definição inadequada do objeto da contratação;\nFalta de análise de mercado e viabilidade; e\nContratos potencialmente ineficientes ou com especificações desatualizadas."
+        },
+        {
+            "codigo": "R5",
+            "risco": "Ausência / Deficiência do Gerenciamento de Riscos.",
+            "descricao": "Inexistência de medidas preventivas para problemas na execução contratual; \nMaior exposição a falhas operacionais e financeiras; e\nRisco de descumprimento de prazos e qualidade contratual."
+        },
+        {
+            "codigo": "R6",
+            "risco": "Ausência / Deficiência do Termo de Referência ou              Projeto Básico.",
+            "descricao": "Especificações inadequadas, prejudicando a qualidade do produto/serviço; \nDificuldade na avaliação das propostas e no cumprimento do contrato; e\nRisco de contratação de fornecedores incapazes de atender à demanda."
+        },
+        {
+            "codigo": "R7",
+            "risco": "Ausência / Deficiência do instrumento convocatório",
+            "descricao": "Fragilidade na seleção dos fornecedores; \nPossíveis impugnações e atrasos no processo licitatório; e \nFalta de clareza nas regras do certame, gerando insegurança jurídica."
+        },
+        {
+            "codigo": "R8",
+            "risco": "Ausência/ Deficiência do TJDL ou TJIL",
+            "descricao": "Falha na justificativa da escolha do fornecedor ou modalidade de contratação;\nRisco de questionamentos sobre a legalidade do processo; e \nDificuldade na defesa do processo em auditorias."
+        },
+        {
+            "codigo": "R9",
+            "risco": "Inadequação jurídica (legal) do processo licitatório ou de afastamento.",
+            "descricao": "Risco de anulação do processo por ilegalidade; \nResponsabilização dos gestores por falhas normativas; e \nPossibilidade de sanções administrativas ou judiciais."
+        },
+        {
+            "codigo": "R10",
+            "risco": "Deficiências na Publicidade do Edital, dos pedidos de esclarecimentos e impugnações.",
+            "descricao": "Redução da competitividade do certame; \nRisco de questionamentos sobre transparência e lisura do processo; e \nAtrasos devido a contestações e esclarecimentos não divulgados corretamente."
+        },
+        {
+            "codigo": "R11",
+            "risco": "Falhas na condução da fase competitiva do certame (fragilidades na Análise das Propostas, Fase de Lances e Aceitação das Propostas)",
+            "descricao": "Contratação de fornecedor inadequado por erro na análise técnica; \nFalhas na negociação, resultando em preços desfavoráveis; e\nRisco de impugnações e necessidade de refazer etapas do certame."
+        },
+        {
+            "codigo": "R12",
+            "risco": "Fragilidades nas fases de    habilitação e recursal.",
+            "descricao": "Fornecedores desqualificados participando do processo;\nRisco de judicialização do certame por concorrentes prejudicados; e \nDificuldade em garantir a idoneidade e capacidade dos contratados."
+        },
+        {
+            "codigo": "R13",
+            "risco": "Fragilidades na Adjudicação e Homologação.",
+            "descricao": "Risco de formalização de contratos com fornecedores inadequados; \nFalta de controle na fase final, resultando em contratações não planejadas; e \nAtraso no início da execução do contrato."
+        },
+        {
+            "codigo": "R14",
+            "risco": "Fragilidades na Celebração do Contrato.",
+            "descricao": "Cláusulas contratuais mal definidas, dificultando a fiscalização; \nRisco de não conformidade com normativas internas e externas; e \nMaior probabilidade de litígios e descumprimentos contratuais."
+        },
+        {
+            "codigo": "R15",
+            "risco": "Fragilidades nas contratações diretas de baixo valor.",
+            "descricao": "Falta de justificativa adequada para a dispensa de licitação;\nRisco de contratações sem comprovação de vantajosidade; e\nPossível direcionamento indevido a fornecedores específicos."
+        },
+        {
+            "codigo": "R16",
+            "risco": "Fragilidades nos processos de Adesão a Atas de Registro de Preços.",
+            "descricao": "Risco de aquisições em condições desfavoráveis; \nFalta de controle sobre a real necessidade de adesão; e \nPossibilidade de sobreposição de contratos e aquisições duplicadas."
+        },
+        {
+            "codigo": "R17",
+            "risco": "Deficiências na indicação e designação dos responsáveis pela gestão e fiscalização dos contratos e substitutos legais (Art. 41 e 42, da IN 5/2017).",
+            "descricao": "Falta de accountability sobre a execução dos contratos; \nRisco de omissões e falhas na fiscalização dos serviços contratados; e \nDificuldade em garantir a conformidade da execução contratual."
+        },
+        {
+            "codigo": "R18",
+            "risco": "Deficiências no planejamento da atividade de fiscalização.",
+            "descricao": "Falhas no acompanhamento da execução contratual; \nIdentificação tardia de descumprimentos e irregularidades; e\nRisco de prejuízos financeiros devido à falta de controle.\n"
+        },
+        {
+            "codigo": "R19",
+            "risco": "Deficiências na atividade de gestão contratual",
+            "descricao": "Falta de monitoramento adequado dos contratos vigentes; \nRisco de descumprimento de cláusulas sem medidas corretivas; e\nPossível impacto na continuidade operacional da OM."
+        },
+        {
+            "codigo": "R20",
+            "risco": "Deficiências na atividade de fiscalização do contrato",
+            "descricao": "Irregularidades na entrega dos serviços/produtos contratados; \nRisco de pagamentos indevidos ou superfaturados; e\nFalta de evidências documentais sobre a execução do contrato."
+        },
+        {
+            "codigo": "R21",
+            "risco": "Deficiências na repactuação e no reajuste dos contratos (Foco - dedicação exclusiva de mão de obra)",
+            "descricao": "Atrasos na atualização dos valores contratuais; \nRisco de pagamento acima ou abaixo do devido; e\nImpacto financeiro negativo para a OM e fornecedores."
+        },
+        {
+            "codigo": "R22",
+            "risco": "Deficiências na salvaguarda dos documentos que compõem os processos de compras e contratações.",
+            "descricao": "Perda de evidências documentais para auditoria e fiscalização; \nRisco de questionamentos jurídicos sem respaldo documental; e\nDificuldade na rastreabilidade das decisões administrativas."
+        },
+        {
+            "codigo": "R23",
+            "risco": "Deficiências na transparência das compras e contratações",
+            "descricao": "Risco de suspeitas de irregularidades; \nFalta de acesso a informações por parte da sociedade e órgãos de controle; e\nRedução da credibilidade da OM na condução dos processos licitatórios."
+        }
+    ],
+    "execucao": [
+        {
+            "codigo": "R1",
+            "risco": "Inadequação da Gestão orçamentária",
+            "descricao": "Falta de capacitação de agentes responsáveis e subordinados; \nInexistência de OI de EOF; e\nFalta de acompanhamento e controle do PAR e dos saldos inscritos em Restos a Pagar."
+        },
+        {
+            "codigo": "R2",
+            "risco": "Inconsistência no empenho",
+            "descricao": "Desvio de finalidade na aplicação do recurso de acordo com a AO x PO; \nPreenchimento inadequado dos campos do empenho; e\nEmpenhos emitidos para militares da MB."
+        },
+        {
+            "codigo": "R3",
+            "risco": "Inconsistência na liquidação da despesa",
+            "descricao": "Liquidação de documento de despesa inválido; \nCertificação da despesa por militar/SC sem a devida competência pelo ato; \nRegistro de contrato e garantia em desacordo com a norma; \nInconsistência no cadastro dos centros de custos; e\nMorosidade na liquidação e certificação dos documentos de despesa."
+        },
+        {
+            "codigo": "R4",
+            "risco": "Inconsistência no pagamento da despesa",
+            "descricao": "Recolhimento indevido da DARF; \npagamento em nome do credor divergente da nota de empenho; pagamento em duplicidade; \npagamento em atraso; \npagamento de RPA de longa duração; \npagamento de juros e documento de despesa que foram cancelados; \ninversão da fase da despesa pública; \nverificação da OM inscrita no Sistema de Dívidas da Marinha; \nconcessão dos valores de diárias e passagens em desacordo com a norma; e\nfalta de ressarcimento de compra de medicamentos (para hospital)."
+        },
+        {
+            "codigo": "R5",
+            "risco": "Não conformidade dos atos",
+            "descricao": "Falta de conformidade dos registros de gestão; e \ninexistência de segregação de função como medida de controle."
+        },
+        {
+            "codigo": "R6",
+            "risco": "Inconsistência na prestação de contas",
+            "descricao": "Inconformidade na prestação de execução financeira e suprimento de fundos"
+        }
+    ],
+    "recursos_humanos": [
+        {
+            "codigo": "R1",
+            "risco": "Ausência de implementação das recomendações contidas no Relatório de Auditoria Anterior.",
+            "descricao": "Reincidência de falhas anteriormente identificadas, comprometendo a eficiência dos processos; \nRisco de sanções administrativas e apontamentos recorrentes em auditorias futuras; e\nFragilidade no controle interno, dificultando a mitigação de riscos operacionais e financeiros."
+        },
+        {
+            "codigo": "R2",
+            "risco": "Recomendações não respondidas, em tempo, no PPP.",
+            "descricao": "Atraso na correção de não conformidades identificadas na auditoria; \nA demora na resposta pode refletir a falta de prioridade dada às recomendações dos auditores.\nRisco de responsabilização dos gestores pela omissão no atendimento das recomendações; e\nPerda de credibilidade do órgão perante instâncias superiores e órgãos de controle."
+        },
+        {
+            "codigo": "R3",
+            "risco": "Direitos Pecuniários lançados indevidamente em O/S.",
+            "descricao": "Pagamentos irregulares, resultando em prejuízo financeiro para a organização; \nPossível necessidade de estorno, gerando transtornos administrativos; e \nRisco de apontamentos em auditorias e sanções por descumprimento normativo."
+        },
+        {
+            "codigo": "R4",
+            "risco": "Direitos pecuniários lançados em O/S sem o devido suporte documental.",
+            "descricao": "Falta de comprovação da legalidade dos pagamentos realizados; \nRisco de auditorias questionarem a legitimidade das operações financeiras; e \nPossibilidade de responsabilização dos gestores por negligência no controle financeiro."
+        },
+        {
+            "codigo": "R5",
+            "risco": "Ausência de O/S para pagamento de direitos pecuniários.",
+            "descricao": "Risco de atrasos nos pagamentos devidos aos militares; \nFalta de rastreabilidade e controle sobre os valores desembolsados; e\nPossibilidade de demandas judiciais por descumprimento de obrigações financeiras."
+        },
+        {
+            "codigo": "R6",
+            "risco": "Ausência de publicação das O/S no Portal de O/S do CCIMAR.",
+            "descricao": "Falta de transparência nas operações financeiras; \nRisco de questionamentos sobre a legalidade e conformidade dos pagamentos; e\nDificuldade na auditoria e fiscalização dos atos administrativos."
+        },
+        {
+            "codigo": "R7",
+            "risco": "Encaminhamento inadequado das O/S para divisão de Pagamento ou Organização Centralizadora (OC)",
+            "descricao": "Penalizações administrativas, advertências e até sanções disciplinares; \nRetardar a liquidação de direitos pecuniários, gerando impactos financeiros negativos para os beneficiários; \nPagamentos errôneos, resultando em prejuízo ao erário e necessidade de devolução de valores; \nPossibilidade de pagamentos indevidos por erro de envio; e \nRetrabalho administrativo para correção de falhas nos processos."
+        },
+        {
+            "codigo": "R8",
+            "risco": "Arquivamento indevido das O/S e suas respectivas matérias.",
+            "descricao": "Responsabilizações para os gestores responsáveis pela guarda documental;\nFalhas na gestão documental e na governança da organização; \nDificuldade na recuperação de documentos para auditoria e fiscalização; \nRisco de extravio de informações essenciais para comprovação de despesas; e \nPossível descumprimento de normativas sobre guarda documental e transparência."
+        },
+        {
+            "codigo": "R9",
+            "risco": "Lançamentos de direitos pecuniários no SISPAG divergentes daqueles autorizados em OS",
+            "descricao": "A divergência entre os valores lançados no SISPAG e os autorizados em O/S pode configurar falha no cumprimento das normas financeiras e administrativas;  \nPagamentos superiores ou inferiores ao devido, causando prejuízo ao erário ou transtornos para os beneficiários; e\nRisco de glosas e devoluções de valores."
+        },
+        {
+            "codigo": "R10",
+            "risco": "Dados Cadastrais lançados incorretamente no SISPAG.",
+            "descricao": "Falhas na execução dos pagamentos; \nPagamentos para beneficiários errados ou impedir que os militares recebam seus direitos corretamente; \nDificuldade no processamento da folha de pagamentos; e \nRisco de processos judiciais por atrasos ou incorreções nos valores pagos.\n"
+        },
+        {
+            "codigo": "R11",
+            "risco": "Implantação indevida de direitos pecuniários no SISPAG.",
+            "descricao": "Descumprimento de normativos internos e externos ocasionando a concessão indevida de direitos pecuniários \nResponsabilização administrativa e disciplinar, onde os responsáveis pela concessão e implantação indevida podem ser penalizados, podendo enfrentar sanções administrativas e até ações judiciais;\nFragilidade nos controles internos: A implantação indevida de direitos pecuniários pode indicar falhas nos processos de autorização e validação de pagamentos; \nPossibilidade de fraude e desvio de recursos financeiros; e\nComprometimento da integridade dos registros financeiros da organização."
+        },
+        {
+            "codigo": "R12",
+            "risco": "Arquivamento inadequado dos processos de pagamento.",
+            "descricao": "Possibilidade de pagamentos em duplicidade; \nRisco de não conformidade com normativas de auditoria e transparência; \nDificuldade na comprovação de despesas e pagamentos realizados; e \nPossibilidade de extravio de documentos essenciais para fiscalização interna e externa."
+        }
+    ],
+    "patrimonio": [
+        {
+            "codigo": "R1",
+            "risco": "Falhas logísticas no processo de recebimento de materiais",
+            "descricao": " Atraso na entrega dos materiais;\nResponsável pelo recebimento de bens não detém as competências necessárias;\nDocumentação não fidedigna/confiável (autenticidade);\nNão verificação da integridade física dos materiais e existência de indícios de violação;\nObjeto entregue fora das especificações ou similaridades que não atendam às necessidades da OM;\nInexistência de Certificados de Recebimento de Bens (CRB) nos Documentos de Despesa;\nCertificado de Recebimento de Bens (CRB), sem assinatura dos agentes responsáveis;\nNotas Fiscais estão revestidas das formalidades legais;\nCustos adicionais com reparo ou substituição; e\nFalta de atendimento da demanda."
+        },
+        {
+            "codigo": "R2",
+            "risco": "Falta de rotina sistemática de treinamento",
+            "descricao": "Não implementação de cultura de aprimoramento contínuo;\nRetrabalho e desperdício;\nFalta de motivação dos agentes da Gestão Patrimonial; e\nNão proporciona meios eficientes que assegure a absorção e transferência de conhecimentos para execução das atividades da Gestão Patrimonial."
+        },
+        {
+            "codigo": "R3",
+            "risco": "Adversidades com inventário patrimonial",
+            "descricao": "Inventários rotativos dos bens móveis não realizados;\nBens de estoque não estão sendo inventariados                             mensalmente;\nExistência de bens de estoque com prazo de validade vencido;\nDivergências encontradas durante os Inventários ainda não regularizadas;\nDocumentos que validam os inventários, não arquivados;\nAusência de inventário geral; e\nDesatualização da carga patrimonial e dos respectivos termos de responsabilidade."
+        },
+        {
+            "codigo": "R4",
+            "risco": "Imperfeições no Tombamento, na Custodia e na Identificação dos Bens Móveis",
+            "descricao": "Inexistência de OS para a designação dos Encarregados de Incumbências;\nExistência de Material fora de carga;\nMaterial ocioso, redistribuído internamente, sem a devida atualização dos registros patrimoniais.\nNão utilização de etiquetas de identificação em todos os bens das Incumbências;\nFalta de formalização da responsabilidade dos bens sob custódia do Encarregado de Incumbência por intermédio do Termo de Responsabilidade de Incumbência (TRI);\nNão utilização de cautelas para formalizar a responsabilidade transitória dos usuários de bens que, perante a Fazenda Nacional, estejam sob a guarda de outrem.\nTermos de Responsabilidade de Incumbência (TRI), desatualizados;\nTermos de Responsabilidade de Incumbência (TRI) sem assinaturas dos Agentes da Gestão Patrimonial e/ou do Encarregado de Incumbência; e\nAusência de adoção de providências quanto aos bens móveis não localizados."
+        },
+        {
+            "codigo": "R5",
+            "risco": "Forma incorreta na descrição do Bens Móveis",
+            "descricao": "Bens Móveis registrados no CADBEM de maneira incompleta;\nInadequada descrição dos bens móveis impacta negativamente a execução de inventários, bem como dificulta a correta avaliação do bem; e\nDescrição das viaturas no CADBEM não complementada com informações que facilitem a sua identificação, como: a placa, o chassi, o Registro Nacional de Veículos Automotores (RENAVAM) e o Número de Identificação do Veículo (NIV)."
+        },
+        {
+            "codigo": "R6",
+            "risco": "Representação sem fidedignidade dos valores de bens do imobilizado e bens de consumo nas demonstrações contábeis",
+            "descricao": "Equações e não conformidades contábeis;\nExistência de itens patrimoniais cadastrados em conta contábil inadequada;\nSaldo na conta contábil 79992.02.01 Bens Móveis a Receber, ainda não regularizado;\nOs saldos do Demonstrativo de Movimentação de Material (DMM), do CADBEM, e do Balancete Contábil, do SIAFI, não estão sendo compatibilizados mensalmente;\nExistência de contas contábeis com saldos alongados;\nDuplicidade de lançamentos; e\nOmissões de lançamentos."
+        },
+        {
+            "codigo": "R7",
+            "risco": "Incoerências nas Depreciações e nas Amortizações",
+            "descricao": "Inconsistência do saldo de Depreciação Acumulada de Bens Móveis;\nDiscrepância em relação aos procedimentos contábeis patrimoniais referentes à conta contábil 12381.01.00 Depreciação Acumulada de Bens Móveis; \nItens não depreciado; \nFalta avaliação bens móveis/imóveis/intangíveis;\nBens Móveis que atingiram o seu valor residual;\nOs saldos da coluna Depreciação Acumulada do DDM por Centro de Custo, do SISBENS, e da conta contábil 12381.01.00, no SIAFI, não estão compatibilizados;\nNão Amortização dos Bens Intangíveis;\nInconsistência do saldo de Depreciação Acumulada de Bens Imóveis;\nFalta ou registro incompatível de depreciação e amortização;\nFalta ou evolução incompatível da amortização do ativo intangível;\nBens Móveis que atingiram o seu valor residual, ou seja, pararam de depreciar e ainda não foram iniciados os procedimentos de destinação de excesso ou de atualização de bens; e\nNão há Comissão de Avaliação de Bens Móveis formalmente designada."
+        },
+        {
+            "codigo": "R8",
+            "risco": "Ausência / Deficiência no Gerenciamento de Riscos.",
+            "descricao": "Não identificados e avaliados os riscos relacionados à gestão dos bens móveis e imóveis no Plano de Gerenciamento de Riscos da OM;\nNão Elaboração dos Mapeamentos, dos Fluxogramas e dos Procedimento Operacional Padrão (POP) da Gestão Patrimonial;\nTratamento dos riscos considerados inaceitáveis por meio da definição das ações para reduzir a probabilidade de ocorrência dos eventos ou suas consequências;\nControles mal desenhados ou mal implementados;\nMapa de Gerenciamento de Riscos não contendo a identificação e a análise dos principais riscos; e\nInexistência de Indicadores de Desempenho."
+        },
+        {
+            "codigo": "R9",
+            "risco": "Inobservância dos princípios básicos de uma boa armazenagem",
+            "descricao": "Instalações físicas inadequadas ou insuficientes;\nDificuldades no controle físico do estoque;\nEspaço insuficiente para estocagem;\nCondições de ventilação/climatização adequadas;\nExistência de produtos com prazo de validade expirado;\nAusência de local apropriado para estocar produtos perigosos;\nInstalação inadequada de equipamentos de incêndio;\nMateriais estocados em contato direto com o piso;\nMateriais da mesma classe não concentrados em locais adjacentes, dificultando as movimentações e os inventários; e\nMateriais não estão resguardados contra à ação dos perigos mecânicos e das ameaças climáticas, bem como de animais daninhos;\nNão utilização do sistema PEPS, conforme orientação normativa, para evitar o envelhecimento do estoque; e\nAusência de cursos de capacitação para o Fiel de Armazenagem."
+        },
+        {
+            "codigo": "R10",
+            "risco": "Probabilidade de fraude e ou furtos",
+            "descricao": "Desvio ou usufruto indevido de materiais;\nExtravio de bens sem o devido ressarcimento, responsabilização e baixa patrimonial;\nDesfazimento de Bens;\nSubtração ou desvio de finalidade envolvendo a utilização de recursos materiais;\nNão apuração de responsabilidade por divergência nos quantitativos; e\nDano ao erário."
+        },
+        {
+            "codigo": "R11",
+            "risco": "Falhas na Destinação de Excessos",
+            "descricao": "Grande lapso temporal nos processos de desfazimento de bens patrimoniais;\nNão enquadramento do processo de formalização da destinação dos bens móveis;\nDestinação dos bens em excesso realizada mediante processo de Destinação Contábil não formalizada por Laudo de Vistoria, Avaliação (LVAD);\nBens ociosos e inservíveis sem destinação adequada;\nProcessamento de baixa no CADBEM com tipo de Nota de Movimentação de Bens (NMB) incorreta;\nDestinação Definitiva de material por meio de Destruição, sem a devida comprovação de que o material está com comprometimento irreversível e irrecuperável de suas características funcionais e físico-químicas;\nDescarte de material destinado para destruição sem observância dos princípios e objetivos da Política Nacional de Resíduos Sólidos; e\nNão designação da Comissão de Vistoria, Avaliação e Destinação para destinação do material em excesso."
+        },
+        {
+            "codigo": "R12",
+            "risco": "Ausência/ Deficiência na              elaboração de Normativos Internos",
+            "descricao": "Inexistência de OI que regula os procedimentos atinentes à Gestoria Patrimonial;\nOrdem Interna, não estabelecendo e definindo, no âmbito interno, responsabilidades e procedimentos para Gestão Patrimonial; e\nNão constam em anexo da OI, os documentos de movimentação de bens, a relação das Incumbências e do Centros de Consumo existentes."
+        },
+        {
+            "codigo": "R13",
+            "risco": "Não conformidade dos atos",
+            "descricao": "Falta de conformidade dos registros da gestão Patrimonial; e\nNão garantia de conformidade com as Normas em vigor."
+        },
+        {
+            "codigo": "R14",
+            "risco": "Falhas de Controle relacionadas a frota de veículos",
+            "descricao": "Inexistência de registro/atualização no SINGRA-2.\nViatura com documentação desatualizada ou sem documentação;\nExistência der multas por infração de trânsito;\nViaturas não cadastradas no CADBEM, na conta contábil 12311.05.03;\nFurto ou roubo de viatura da frota;\nViaturas não cadastradas no SINGRA-2; e\nNão atualização dos dados do SINGRA-2."
+        },
+        {
+            "codigo": "R15",
+            "risco": "Distorções nas demonstrações contábeis dos Bens Imóveis",
+            "descricao": "Não compatibilização financeira dos saldos no SIAFI e no SPIUnet;\nO valor registrado no Sistema de Gerenciamento dos Imóveis de Uso Especial da União SPIUnet divergente do valor contabilizado no SIAFI;\nSaldo indevido ou ainda não regularizado na Conta Contábil 12321.99.05 Imóveis a Classificar/a Registrar;\nControle do registro no SPIUnet a classificar, ainda não ratificado;\nSaldo alongado, indevido ou ainda não regularizado na Conta Contábil 12321.07.00 Instalações;\nSaldo alongado ou indevido na Conta Contábil 12321.08.00 Benfeitorias em propriedade de terceiros;\nNão reclassificação da conta contábil 12321.01.98 Outros bens imóveis registrados no SPIUnet;\nSaldo indevido ou ainda não regularizado na Conta Contábil 12321.06.05 Estudos e Projetos;\nSaldo indevido ou ainda não regularizado na Conta Contábil 12321.06.01 Obras em Andamento;\nRegistros incorretos de ajustes de saldos e movimentação de estoques no SIAFI; e\nRestrições contábeis relevantes apontadas na Conformidade Contábil."
+        },
+        {
+            "codigo": "R16",
+            "risco": "Imprecisão e desatualização dos valores dos Bens Imóveis",
+            "descricao": "Baixa capacidade operacional para avaliar imóveis;\nAusência de critérios adequados e de rotinas sistemáticas de reavaliação de imóveis;\nNão avaliação de imóveis com validades vencidas no sistema SPIUnet; e\nBens de Uso Especial não registrados no SPIUnet."
+        },
+        {
+            "codigo": "R17",
+            "risco": "Inconformidades na Prestação de Contas da Gestão Patrimonial",
+            "descricao": "Ausência ou ineficiência na Prestação de Contas;\nArquivamento inadequado dos processos;\nPrestações de Contas sem conformidade com as normas internas;\nPrestação de Contas não encaminhadas para exame e aprovação do Conselho de Gestão;\nFalta de numeração e das rubricas nas folhas das Prestações de Contas;\nPeríodo de guarda dos documentos comprobatórios em desacordo com a IN 84/2020, do TCU;\nAusência do Parecer de Análise de Contas Inicial (PACI); Deterioração dos documentos dos documentos das Prestações de Contas; e\nNão inclusão de documentos imprescindíveis para a gestão e fiscalização."
+        }
+    ],
+    "municiamento": [
+        {
+            "codigo": "R1",
+            "risco": "A OM não possui procedimentos licitatórios adequados para atender a demanda de gêneros alimentícios",
+            "descricao": "Risco de desabastecimento e necessidade de compras emergenciais; \nVulnerabilidade a irregularidades e favorecimento indevido de fornecedores; e\nFragilidade na fiscalização e controle dos contratos."
+        },
+        {
+            "codigo": "R2",
+            "risco": "A estimativa de demanda dos itens incluídos nas licitações não está adequada à necessidade da OM",
+            "descricao": "Excesso ou falta de itens, comprometendo a execução dos cardápios; \nDesperdício de recursos financeiros com compras desnecessárias; e\nAumento da necessidade de ajustes emergenciais nos processos de compra."
+        },
+        {
+            "codigo": "R3",
+            "risco": "Os processos licitatórios que apoiam o serviço de alimentação não seguem os parâmetros legais",
+            "descricao": "Risco de anulação dos processos e penalizações administrativas; \nPossibilidade de questionamentos por órgãos de controle e auditorias; e\nImpacto na credibilidade da gestão da OM e atrasos na obtenção dos insumos."
+        },
+        {
+            "codigo": "R4",
+            "risco": "Os preços dos itens adquiridos não são exequíveis e/ou não se encontram aderentes aos preços de mercado",
+            "descricao": "Superfaturamento e desperdício de recursos públicos; \nRisco de entrega parcial ou não entrega dos itens por inviabilidade financeira dos fornecedores; e\nDescontrole orçamentário e necessidade de suplementação de verbas."
+        },
+        {
+            "codigo": "R5",
+            "risco": "Não há gêneros suficientes disponíveis para atendimento dos cardápios",
+            "descricao": "Impacto direto na alimentação dos militares e comensais;\nNecessidade de substituições improvisadas, afetando a qualidade nutricional; e\nDesgaste na relação com fornecedores e risco de insatisfação dos usuários."
+        },
+        {
+            "codigo": "R6",
+            "risco": "Os valores dos cardápios aprovados não estão dentro da Despesa Autorizada",
+            "descricao": "Possibilidade de gerar sobras lícitas negativas; \nImpacto no cardápio do mês seguinte, em decorrência da dívida passar de um mês para o outro; e\nDemonstra possível falta de planejamento por parte dos agentes responsáveis."
+        },
+        {
+            "codigo": "R7",
+            "risco": "Os cardápios não atendem parâmetros nutricionais adequados",
+            "descricao": "Risco de deficiências nutricionais e impacto na saúde dos comensais; \nPossíveis reclamações e insatisfação dos militares e servidores; e\nInterferência na capacidade operacional devido à má alimentação."
+        },
+        {
+            "codigo": "R8",
+            "risco": "Créditos orçamentários insuficientes para atender à demanda da OM",
+            "descricao": "Impossibilidade de aquisição dos gêneros necessários; \nInterrupção no fornecimento de refeições por falta de insumos; e\nImpossibilidade de cumprir o cardápio aprovado previamente."
+        },
+        {
+            "codigo": "R9",
+            "risco": "Controle de saldo de empenhos não está adequado",
+            "descricao": "Possibilidade de gastos acima do limite autorizado; \nRisco de insuficiência de recursos no final do período orçamentário; e \nAumento da necessidade de suplementação emergencial de crédito."
+        },
+        {
+            "codigo": "R10",
+            "risco": "Pedidos de gêneros aos fornecedores não são formalmente autorizados",
+            "descricao": "Risco de recebimento de itens não requisitados e descontrole no estoque; \nCompras irregulares sem comprovação documental; e \nFalta de transparência e rastreabilidade nos processos de compra."
+        },
+        {
+            "codigo": "R11",
+            "risco": "Os pedidos de gêneros não são direcionados aos fornecedores adjudicados nos processos licitatórios ou processos de formais de dispensa",
+            "descricao": "Aquisição de produtos sem respaldo legal, resultando em possíveis sanções; \nRisco de baixa qualidade dos itens adquiridos fora do contrato; e\nDificuldade em comprovar a regularidade das aquisições perante auditorias."
+        },
+        {
+            "codigo": "R12",
+            "risco": "Os gêneros alimentícios solicitados não são entregues dentro dos prazos contratuais",
+            "descricao": "Falta de insumos essenciais para a preparação das refeições;\nNecessidade de substituições emergenciais, impactando a qualidade nutricional; e\nMultas e penalizações contratuais contra fornecedores inadimplentes."
+        },
+        {
+            "codigo": "R13",
+            "risco": "Os pagamentos aos fornecedores não são realizados adequadamente e dentro dos prazos contratuais",
+            "descricao": "Fornecedores deixam de priorizar a OM devido a atrasos nos pagamentos; \nRisco de cobrança de juros e multas contratuais; e \nComprometimento da credibilidade da OM perante fornecedores e órgãos de controle."
+        },
+        {
+            "codigo": "R14",
+            "risco": "A fonte de recursos utilizada para aquisição de gêneros alimentícios não é aquela prevista nas normas em vigor",
+            "descricao": "Apontamentos em auditorias e necessidade de ajustes contábeis; \nPossível penalização da OM por uso indevido de recursos; e\nImpacto na montagem do plano de ação."
+        },
+        {
+            "codigo": "R15",
+            "risco": "A conferência dos gêneros recebidos não é realizada de maneira correta",
+            "descricao": "Recebimento de produtos em quantidade ou qualidade inferior ao contratado; \nDificuldade na responsabilização de fornecedores por entregas inadequadas; e\nPossível desvio de insumos devido à falta de fiscalização adequada."
+        },
+        {
+            "codigo": "R16",
+            "risco": "O registro das Notas Fiscais não é executado corretamente no Sistema Quaestor",
+            "descricao": "Inconsistências contábeis dificultando a prestação de contas; \nRisco de fraudes ou pagamentos indevidos a fornecedores; e \nNecessidade de retrabalho administrativo para correção dos registros."
+        },
+        {
+            "codigo": "R17",
+            "risco": "Não há mecanismos de controle para registrar o recebimento de gêneros alimentícios",
+            "descricao": "Risco de desvio ou extravio de gêneros sem identificação; \nFalta de rastreabilidade dos produtos entregues; e\nDificuldade na apuração de responsabilidades em caso de falhas na entrega."
+        },
+        {
+            "codigo": "R18",
+            "risco": "Não há controles eficazes para evitar a deterioração de alimentos na OM",
+            "descricao": "Desperdício de gêneros devido a armazenamento inadequado; \nNecessidade de compras emergenciais para substituir produtos deteriorados; e \nPossível contaminação alimentar, comprometendo a segurança dos comensais."
+        },
+        {
+            "codigo": "R19",
+            "risco": "Controles ineficazes para evitar o extravio de gêneros na OM",
+            "descricao": "Risco de desvios e furtos sem detecção; \nFalta de controle no fluxo de entrada e saída dos insumos; e \nDificuldade na auditoria e prestação de contas."
+        },
+        {
+            "codigo": "R20",
+            "risco": "Procedimentos adotados para evitar a contaminação dos gêneros alimentícios não são satisfatórios",
+            "descricao": "Risco de surtos de doenças alimentares entre os comensais;\nPossibilidade de interdição do serviço de alimentação por órgãos de vigilância sanitária; e \nResponsabilização administrativa dos gestores por falhas na segurança alimentar."
+        },
+        {
+            "codigo": "R21",
+            "risco": "Os procedimentos adotados para evitar a presença de vetores nos paióis de gêneros alimentícios não são satisfatórios",
+            "descricao": "Contaminação de alimentos por pragas e roedores;\nPossível perda de insumos por infestação; e \nExposição a riscos sanitários, comprometendo a saúde dos consumidores."
+        },
+        {
+            "codigo": "R22",
+            "risco": "Há divergências entre o inventário físico e o contábil",
+            "descricao": "Indícios de desvios e fraudes na gestão de estoques; \nNecessidade de ajustes contábeis frequentes, impactando a confiabilidade dos registros; e\nFalta de credibilidade nos controles internos."
+        },
+        {
+            "codigo": "R23",
+            "risco": "vales de gêneros não corresponderem às necessidades dos setores que produzem as refeições",
+            "descricao": "Insumos desnecessários adquiridos, gerando desperdício de recursos; \nInsuficiência de gêneros para atender a demanda dos cardápios; e \nRisco de realocação emergencial de produtos, comprometendo outros setores."
+        },
+        {
+            "codigo": "R24",
+            "risco": "Os vales de gêneros lançados no Sistema Quaestor não estão de acordo com aqueles efetivamente aprovados e fornecidos",
+            "descricao": "Inconsistências contábeis e risco de questionamentos em auditorias; \nPossibilidade de fraude no controle de estoque; e \nDificuldade na rastreabilidade dos insumos distribuídos."
+        },
+        {
+            "codigo": "R25",
+            "risco": "Os gêneros entregues pelo Paiol de Mantimentos não estão previstos em vales devidamente aprovados",
+            "descricao": "Falta de controle na distribuição dos insumos; \nPossível desvio de produtos sem comprovação documental; e \nDificuldade na verificação da regularidade dos processos de distribuição."
+        },
+        {
+            "codigo": "R26",
+            "risco": "Há vales digitados sem a efetiva saída de gêneros alimentícios do paiol",
+            "descricao": "Possível fraude nos registros contábeis; \nEstoque fictício, comprometendo o planejamento de compras; e \nRisco de responsabilização administrativa dos gestores."
+        },
+        {
+            "codigo": "R27",
+            "risco": "Há retornos de itens físico ao paiol sem o devido Vale de Retorno ao paiol",
+            "descricao": "Dificuldade em rastrear a movimentação dos insumos; \nPossível extravio de gêneros alimentícios sem comprovação documental; e\nInconsistências no controle de estoque."
+        },
+        {
+            "codigo": "R28",
+            "risco": "As refeições não são produzidas e distribuídas tempestivamente e nas condições adequadas",
+            "descricao": "Insatisfação dos comensais devido ao atraso na alimentação; \nRisco de perda da qualidade nutricional dos alimentos; e \nPossibilidade de desperdício de refeições devido à má gestão do tempo de produção."
+        },
+        {
+            "codigo": "R29",
+            "risco": "Extravio de gêneros por ocasião do preparo e distribuição",
+            "descricao": "Desvio de insumos durante o manuseio e preparo; \nFalta de registros sobre a quantidade real utilizada nas refeições; e \nDificuldade em apurar responsabilidades e corrigir falhas no processo."
+        },
+        {
+            "codigo": "R30",
+            "risco": "Os comensais não avaliam satisfatoriamente as refeições distribuídas",
+            "descricao": "Indicação de baixa qualidade e necessidade de reformulação dos cardápios; \nPossível desperdício de refeições não consumidas; e\nImpacto na moral e bem-estar dos militares e servidores."
+        },
+        {
+            "codigo": "R31",
+            "risco": "Existe contaminação cruzada nos ambientes de rancho",
+            "descricao": "Risco de surtos de doenças alimentares; \nNecessidade de interdição de áreas de preparo devido a não conformidade sanitária; e\nResponsabilização dos gestores por falhas nos protocolos de higiene."
+        },
+        {
+            "codigo": "R32",
+            "risco": "As prestações de contas não estão sendo devidamente autuadas e arquivadas",
+            "descricao": "Dificuldade em comprovar a legalidade das despesas; \nRisco de apontamentos em auditorias devido à falta de documentação; e\nPossível necessidade de devolução de recursos por ausência de comprovação adequada."
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+<div>
+    <mat-card>
+        <mat-card-content>
+            <div class="header-container">
+              <h2 class="page-title">Identificação de Riscos</h2>
+      
+              <div class="button-group">
+                <button mat-raised-button color="primary">
+                  <mat-icon>file_download</mat-icon>
+                  Exportar
+                </button>
+                <button mat-raised-button color="accent">
+                  <mat-icon>file_upload</mat-icon>
+                  Importar
+                </button>
+                <button mat-raised-button color="primary">
+                  <mat-icon>add</mat-icon>
+                  Adicionar
+                </button>
+                <button mat-raised-button color="warn">
+                  <mat-icon>description</mat-icon>
+                  Relatório
+                </button>
+                <button mat-raised-button color="accent">
+                  <mat-icon>help_outline</mat-icon>
+                  Ajuda
+                </button>
+              </div>
+              
+            </div>        
+        <mat-tab-group>
+          <mat-tab label="Licitação">
+            <table mat-table [dataSource]="licitacao" class="mat-elevation-z8">
+              <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef> Código </th>
+                <td mat-cell *matCellDef="let item"> {{item.codigo}} </td>
+              </ng-container>
+              <ng-container matColumnDef="risco">
+                <th mat-header-cell *matHeaderCellDef> Risco </th>
+                <td mat-cell *matCellDef="let item"> {{item.risco}} </td>
+              </ng-container>
+              <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                <td mat-cell *matCellDef="let item"> {{item.descricao}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </mat-tab>
+          <mat-tab label="Execução">
+            <table mat-table [dataSource]="execucao" class="mat-elevation-z8">
+              <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef> Código </th>
+                <td mat-cell *matCellDef="let item"> {{item.codigo}} </td>
+              </ng-container>
+              <ng-container matColumnDef="risco">
+                <th mat-header-cell *matHeaderCellDef> Risco </th>
+                <td mat-cell *matCellDef="let item"> {{item.risco}} </td>
+              </ng-container>
+              <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                <td mat-cell *matCellDef="let item"> {{item.descricao}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </mat-tab>
+          <mat-tab label="Recursos Humanos">
+            <table mat-table [dataSource]="recursos_humanos" class="mat-elevation-z8">
+              <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef> Código </th>
+                <td mat-cell *matCellDef="let item"> {{item.codigo}} </td>
+              </ng-container>
+              <ng-container matColumnDef="risco">
+                <th mat-header-cell *matHeaderCellDef> Risco </th>
+                <td mat-cell *matCellDef="let item"> {{item.risco}} </td>
+              </ng-container>
+              <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                <td mat-cell *matCellDef="let item"> {{item.descricao}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </mat-tab>
+          <mat-tab label="Patrimônio">
+            <table mat-table [dataSource]="patrimonio" class="mat-elevation-z8">
+              <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef> Código </th>
+                <td mat-cell *matCellDef="let item"> {{item.codigo}} </td>
+              </ng-container>
+              <ng-container matColumnDef="risco">
+                <th mat-header-cell *matHeaderCellDef> Risco </th>
+                <td mat-cell *matCellDef="let item"> {{item.risco}} </td>
+              </ng-container>
+              <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                <td mat-cell *matCellDef="let item"> {{item.descricao}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </mat-tab>
+          <mat-tab label="Municiamento">
+            <table mat-table [dataSource]="municiamento" class="mat-elevation-z8">
+              <ng-container matColumnDef="codigo">
+                <th mat-header-cell *matHeaderCellDef> Código </th>
+                <td mat-cell *matCellDef="let item"> {{item.codigo}} </td>
+              </ng-container>
+              <ng-container matColumnDef="risco">
+                <th mat-header-cell *matHeaderCellDef> Risco </th>
+                <td mat-cell *matCellDef="let item"> {{item.risco}} </td>
+              </ng-container>
+              <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                <td mat-cell *matCellDef="let item"> {{item.descricao}} </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
